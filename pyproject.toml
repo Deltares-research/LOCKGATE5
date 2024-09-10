@@ -4,7 +4,7 @@ dynamic = ["version"]
 authors = [
     { name = "Sam van der Zwan", email = "sam.vanderzwan@deltares.nl" },
 ]
-description = "Modules to calcualte the forces on lock gates."
+description = "Modules to calculate the forces on lock gates."
 readme = "README.md"
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -19,7 +19,9 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Physics",
 ]
 
-dependencies = ["coloredlogs~=15.0.1"]
+dependencies = ["coloredlogs~=15.0.1",
+                "numpy~=1.21.2",
+]
 
 [project.optional-dependencies]
 dev = [

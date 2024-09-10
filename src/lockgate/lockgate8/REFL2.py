@@ -292,7 +292,9 @@ def refl(fileName, maxsteps):
     alfa = (hlm-hv)/na0
     print(alfa)
     fileout.close()
+
+
 if __name__ == "__main__":
     maxsteps = 500 # Number of steps going over a period of wave between two sections
-    filename = 'R21'
+    filename = r'.\test_data\lockgate8\R21'
     refl(filename, maxsteps)

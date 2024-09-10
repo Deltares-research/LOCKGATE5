@@ -205,5 +205,5 @@ def gate7(fileName):
   fileout.close()
 
 if __name__ == "__main__":
-    filename = 'B001'
+    filename = r'.\test_data\lockgate3\B001'
     gate7(filename)
