@@ -22,8 +22,8 @@ N2 = np.zeros(21) #golfhoogte kolkzijde ter plaatse van spleet ? [m]
 
 NV=NW=0
 
-QA = np.zeros(1001) #?
-QB = np.zeros(1001) #?
+QA = []#np.zeros(1001) #?
+QB = []#np.zeros(1001) #?
 G = 9.81 #Gravitatieversnelling [m/s^2]
 
 # =====INVOER=====================================================
@@ -157,17 +157,19 @@ while True:
             P = P+1
             NAO = NA
             NBO = NB
-            QA[J] = (Dict_inv['MU'] * Dict_inv['BA'] * (Dict_inv['HKI'] - Dict_inv['ZK']) *
+            QA_dum = (Dict_inv['MU'] * Dict_inv['BA'] * (Dict_inv['HKI'] - Dict_inv['ZK']) *
                      math.copysign(1, NV - NA - NAT) * np.sqrt(2 * G * abs(NV - NA - NAT)) - QAT) 
-            QB[J] = (Dict_inv['MU'] * Dict_inv['BB'] * (Dict_inv['HKI'] - Dict_inv['ZK']) *
-                     math.copysign(1, (NB + NBT - NW)) * np.sqrt(2 * G * abs(NB + NBT - NW)) - QBT)
-            NAN = QA[J] / (Dict_inv['BKAS']*CK)
-            NBN = -QB[J] / (Dict_inv['BKAS']*CK)
+            QB_dum = (-Dict_inv['MU'] * Dict_inv['BB'] * (Dict_inv['HKI'] - Dict_inv['ZK']) *
+                     math.copysign(1, (NW-NB-NBT)) * np.sqrt(2 * G * abs(NW-NB-NBT)) - QBT)
+            NAN = QA_dum / (Dict_inv['BKAS']*CK)
+            NBN = -QB_dum / (Dict_inv['BKAS']*CK)
             NA = (1.8 * NAO + 0.2 * NAN) / 2
             NB = (1.8 * NBO + 0.2 * NBN) / 2
 
             if P >= 1000 or (abs(NAO-NA) <= 0.001 and abs(NBO-NB) <= 0.001):
                 break
+        QA.append(QA_dum)
+        QB.append(QB_dum)
 
         HV = Dict_inv['HKI'] + NV #waterstand in de kolk
         HA = HKAS + NA + NAT #waterstand bij spleet A. Waterstand KAS
@@ -228,91 +230,87 @@ while True:
 
 
     #De lengte array van de golf is al voorbij
-    else:
+    else:   
+        print('T=',T,QBT, 'NBT=',NBT, 'NB=',NB, QB[len(QB)-1],QB_dum)
+        #if T == 12.90:
+        #    break
 
-
-        print('T=',T,QBT, 'NBT=',NBT, 'NB=',NB, QB[len(QB)-1])
-        if T == 12.92:
-            break
-        QAT = QB[N-NKAS] #N-NKAS is 1 hele golflengte geleden (door ck komt debiet van B ten tijde van (N-NKAS) nu aan bij A)
-        QBT = QA[N-NKAS]
+        QAT = QB[len(QB)-1-NKAS] #N-NKAS is 1 hele golflengte geleden (door ck komt debiet van B ten tijde van (N-NKAS) nu aan bij A)
+        QBT = QA[len(QA)-1-NKAS]
         #Inkomende golfhoogte door translatiegolf
         NAT = -QAT / (Dict_inv['BKAS']*CK)
         NBT = QBT / (Dict_inv['BKAS']*CK)
-
-        #if QBT > 0:
-        #    break
-
-        for L in range(0,N):
-            #Alles debieten schuiven een stapje verder, op locatie N komt het nieuwe debiet
-            QA[L] = QA[L+1]
-            QB[L] = QB[L+1]
         
         P = 0
         #Itereren tot juist benadering golfhoogte
         while True:
             P = P+1
+
             NAO = NA
             NBO = NB
+            
+            QA_dum = (Dict_inv['MU'] * Dict_inv['BA'] * (Dict_inv['HKI'] - Dict_inv['ZK']) * math.copysign(1, NV - NA - NAT) * np.sqrt(2 * G * abs(NV - NA - NAT)) - QAT) 
+            QB_dum = (-Dict_inv['MU'] * Dict_inv['BB'] * (Dict_inv['HKI'] - Dict_inv['ZK']) * math.copysign(1, (NW-NB-NBT)) * np.sqrt(2 * G * abs(NW-NB-NBT)) - QBT)
 
-            #
-            QA[N] = (Dict_inv['MU'] * Dict_inv['BA'] * (Dict_inv['HKI'] - Dict_inv['ZK']) *
-                     math.copysign(1, NV - NA - NAT) * np.sqrt(2 * G * abs(NV - NA - NAT)) - QAT) 
-            QB[N] = (-Dict_inv['MU'] * Dict_inv['BB'] * (Dict_inv['HKI'] - Dict_inv['ZK']) *
-                     math.copysign(1, (NW-NB-NBT)) * np.sqrt(2 * G * abs(NW-NB-NBT)) - QBT)
-            NAN = QA[N] / (Dict_inv['BKAS']*CK)
-            NBN = -QB[N] / (Dict_inv['BKAS']*CK)
-            NA = (1.8 * NAO + 0.2 * NAN) / 2
-            NB = (1.8 * NBO + 0.2 * NBN) / 2
+            NAN = QA_dum / (Dict_inv['BKAS']*CK)
+            NBN = -QB_dum / (Dict_inv['BKAS']*CK)
+            NA = (0.9 * NAO + 0.1 * NAN)
+            NB = (0.9 * NBO + 0.1 * NBN)
 
-            if P >= 1000 or (abs(NAO-NA) <= 0.001 and abs(NBO-NB) <= 0.001):
+            if P >= 5000 or (abs(NAO-NA) <= 0.001 and abs(NBO-NB) <= 0.001):
+                #alpha = 0.1
+                #NA = (1 - alpha) * NAO + alpha * ((1.8 * NAO + 0.20 * NAN) / 2)
+                #NB =(1 -alpha) * NBO + alpha * ((1.8 * NBO + 0.20 * NBN) / 2)
                 break
+
+        QA.append(QA_dum)
+        QB.append(QB_dum)
 
         HV = Dict_inv['HKI'] + NV #waterstand in de kolk
         HA = HKAS + NA + NAT #waterstand bij spleet A
 
         if J >= 9 * NK:
-            H1 = HKAS + (QA[N - NK] - QB[N - 9 * NK]) / (Dict_inv['BKAS'] * CK)
-            H9 = HKAS + (QA[N - 9 * NK] - QB[N - NK]) / (Dict_inv['BKAS'] * CK)
+            H1 = HKAS + (QA[len(QA)-1 - NK] - QB[len(QB)-1 - 9 * NK]) / (Dict_inv['BKAS'] * CK)
+            H9 = HKAS + (QA[len(QA)-1 - 9 * NK] - QB[len(QB)-1 - NK]) / (Dict_inv['BKAS'] * CK)
         elif J >= NK:
-            H1 = HKAS + QA[N - NK] / (Dict_inv['BKAS'] * CK)
-            H9 = HKAS - QB[N - NK] / (Dict_inv['BKAS'] * CK)
+            H1 = HKAS + QA[len(QA)-1 - NK] / (Dict_inv['BKAS'] * CK)
+            H9 = HKAS - QB[len(QB)-1 - NK] / (Dict_inv['BKAS'] * CK)
         else:
             H1 = HKAS
             H9 = HKAS
 
         if J >= 8 * NK:
-            H2 = HKAS + (QA[N - 2 * NK] - QB[N - 8 * NK]) / (Dict_inv['BKAS'] * CK)
-            H8 = HKAS + (QA[N - 8 * NK] - QB[N - 2 * NK]) / (Dict_inv['BKAS'] * CK)
+            H2 = HKAS + (QA[len(QA)-1 - 2 * NK] - QB[len(QB)-1 - 8 * NK]) / (Dict_inv['BKAS'] * CK)
+            H8 = HKAS + (QA[len(QA)-1 - 8 * NK] - QB[len(QB)-1 - 2 * NK]) / (Dict_inv['BKAS'] * CK)
         elif J >= 2 * NK:
-            H2 = HKAS + QA[N - 2 * NK] / (Dict_inv['BKAS'] * CK)
-            H8 = HKAS - QB[N - 2 * NK] / (Dict_inv['BKAS'] * CK)
+            H2 = HKAS + QA[len(QA)-1 - 2 * NK] / (Dict_inv['BKAS'] * CK)
+            H8 = HKAS - QB[len(QB)-1 - 2 * NK] / (Dict_inv['BKAS'] * CK)
         else:
             H2 = HKAS
             H8 = HKAS
 
         if J >= 7 * NK:
-            H3 = HKAS + (QA[N - 3 * NK ] - QB[N - 7 * NK]) / (Dict_inv['BKAS'] * CK)
-            H7 = HKAS + (QA[N - 7 * NK ] - QB[N - 3 * NK]) / (Dict_inv['BKAS'] * CK)
+            H3 = HKAS + (QA[len(QA)-1 - 3 * NK ] - QB[len(QB)-1 - 7 * NK]) / (Dict_inv['BKAS'] * CK)
+            H7 = HKAS + (QA[len(QA) - 7 * NK ] - QB[len(QB)-1 - 3 * NK]) / (Dict_inv['BKAS'] * CK)
         elif J >= 3 * NK:
-            H3 = HKAS + QA[N - 3 * NK ] / (Dict_inv['BKAS'] * CK)
-            H7 = HKAS - QB[N - 3 * NK ] / (Dict_inv['BKAS'] * CK)
+            H3 = HKAS + QA[len(QA)-1 - 3 * NK ] / (Dict_inv['BKAS'] * CK)
+            H7 = HKAS - QB[len(QB)-1 - 3 * NK ] / (Dict_inv['BKAS'] * CK)
         else:
             H3 = HKAS
             H7 = HKAS
 
         if J >= 6 * NK:
-            H4 = HKAS + (QA[N - 4 * NK] - QB[N - 6 * NK]) / (Dict_inv['BKAS'] * CK)
-            H6 = HKAS + (QA[N - 6 * NK ] - QB[N - 4 * NK]) / (Dict_inv['BKAS'] * CK)
+            H4 = HKAS + (QA[len(QA)-1 - 4 * NK] - QB[len(QB)-1 - 6 * NK]) / (Dict_inv['BKAS'] * CK)
+            H6 = HKAS + (QA[len(QA)-1 - 6 * NK ] - QB[len(QB)-1 - 4 * NK]) / (Dict_inv['BKAS'] * CK)
         elif J >= 4 * NK:
-            H4 = HKAS + QA[N - 4 * NK] / (Dict_inv['BKAS'] * CK)
-            H6 = HKAS - QB[N - 4 * NK] / (Dict_inv['BKAS'] * CK)
+            H4 = HKAS + QA[len(QA)-1 - 4 * NK] / (Dict_inv['BKAS'] * CK)
+            H6 = HKAS - QB[len(QB)-1 - 4 * NK] / (Dict_inv['BKAS'] * CK)
         else:
             H4 = HKAS
             H6 = HKAS
 
         if J >= 5*NK:
-            H5 = HKAS + (QA[N - 5 * NK] - QB[N - 5 * NK]) / (Dict_inv['BKAS'] * CK)
+            H5 = HKAS + (QA[len(QA)-1 - 5 * NK] - QB[len(QB)-1 - 5 * NK]) / (Dict_inv['BKAS'] * CK)
         else:
             H5 = HKAS
 
@@ -321,8 +319,9 @@ while True:
 
         HGEM = HKAS+(0.5*HA+H1 + H2 + H3 + H4 + H5 + H6 + H7 + H8 + H9+0.5*HB) / 10
 
-        QAA = QA[N] + QAT
-        QBB = QB[N] + QBT        
+        #Deze snap ik nog niet
+        QAA = QA[len(QA)-1] + QAT
+        QBB = QB[len(QB)-1] + QBT        
 
     # Constants
     DTT = DTG / 10
@@ -377,6 +376,7 @@ while True:
 
     J += 1
     T = round(T+Dict_inv['DT'],2)
+
 
 print(T)
 print('NAT',NAT,'NBT',NBT,'NV',NV,'NW',NW,'NA',NA,'NB',NB)
