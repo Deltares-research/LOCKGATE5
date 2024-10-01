@@ -8,7 +8,7 @@ def VOL(h1, w1, w2, uo, dl, p, q, alfa):
         alfa[x] = phi[x] / uo
 
     V = 0.0
-    for x in range(1, h1 + 1):
+    for x in range(0, h1 + 1):
         V += alfa[x] * dl
 
     return V, alfa
@@ -76,7 +76,7 @@ def Q1(x, z, rl, p, q):
     pr = (-q[x] + p[x-1, z] + p[x, z-1] + p[x+1, z]) / 3
     p[x, z] = po + rl * (pr - po)
 
-    #bovenrand, qschuif
+    #linkerrand, qschuif
 def Q2(x, z, rl, p, q):
     po = p[x, z]
     pr = (q[z] + p[x, z+1] + p[x+1, z] + p[x, z-1]) / 3

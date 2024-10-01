@@ -29,7 +29,6 @@ importlib.reload(HYMS)
 from HYMS import *
 import matplotlib.pyplot as plt
 
-
 # Initialize parameters
 w1 = 30     #Verticale afstand onderrand / strip (?) Ik denk dat strip gaat over een rubberen strip die op de deurkas zit bevestigd om een spleet af te dichten/de deur zonder stoot te openen of het gaat om de spleet
 w2 = 1      #Dikte strip (ookwel deur)
@@ -38,7 +37,7 @@ h1 = 50     #breedte strip die de deur voorsteld (translerende deel).
 h2 = 10     #horinzontale afstand strip (ookwel deur) tot de zijkant van de deurkas (we berekenen maar helft van het flow field vanwege aanname symmetrisch dus alleen rechterhelft)
 #h1 + h2 = totale lengte deur in horizontale plane en de afstand deur tot deurkas
 uo = 1.0        #Snelheid van de translerende beweging deur (m/s)
-dl = 1.0        #deurdikte (m in z-plane) dus de diepte in
+dl = 1.0        #stapje in lengte langzij deurlengte
 rl = 1.8        #Relaxation factor (usually 1.5-1.7)
 epsn = 0.05    #Nauwkeurigheidsmarge (95%), Accuracy range
 V = 0.00      #Volume (Maar waarvan?)
@@ -156,15 +155,16 @@ for x in range(0, h1 + 1):
 
 plt.plot(alfa)
 plt.title('alfa')
-plt.ylabel('?')
-plt.xlabel('?')
+plt.xlim([0,h1+h2])
+plt.xlabel('x-dir')
+plt.ylabel('phi / Vs')
 
 plt.figure()
 plt.imshow(p.transpose(), cmap='bwr', origin='lower',vmin=-30,vmax=30)
 plt.title('Element overview of potential flow field')
-plt.xlabel('x-dir [m]')
-plt.ylabel('y-dir [m]')
+plt.xlabel('x-dir')
+plt.ylabel('y-dir')
 plt.xlim([0,h1+h2])
 plt.ylim([0,w1+w2+w3])
-plt.colorbar(label='Value')
+plt.colorbar(label='Potentiaal')
 
