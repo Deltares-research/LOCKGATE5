@@ -13,7 +13,7 @@ from INTER import inter
 import math
 import matplotlib.pyplot as plt
 
-Inv_naam = 'Test_invoer.IN'
+Inv_naam = 'Inv_Sam_nz.IN'
 
 T1 = np.zeros(21) #Tijdstabel [s]
 N1 = np.zeros(21) #golfhoogte kolkzijde ter plaatse van spleet A [m]
@@ -254,8 +254,8 @@ while True:
 
             NAN = QA_dum / (Dict_inv['BKAS']*CK)
             NBN = -QB_dum / (Dict_inv['BKAS']*CK)
-            NA = (0.9 * NAO + 0.1 * NAN)
-            NB = (0.9 * NBO + 0.1 * NBN)
+            NA = (0.89 * NAO + 0.11 * NAN)
+            NB = (0.89 * NBO + 0.11 * NBN)
 
             if P >= 5000 or (abs(NAO-NA) <= 0.001 and abs(NBO-NB) <= 0.001):
                 #alpha = 0.1
@@ -410,7 +410,6 @@ plt.plot(L_T,L_dH)
 plt.ylim([-0.8,0.8])
 plt.grid()
 plt.xticks([-6,0,6,12,18,24,30])
-
 
 #Uitvoer
 # T = tijd [s]
