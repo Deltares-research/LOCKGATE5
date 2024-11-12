@@ -12,6 +12,7 @@ import os
 from INTER import inter
 import math
 import matplotlib.pyplot as plt
+import pandas as pd
 
 Inv_naam = 'Inv_Sam_nz.IN'
 
@@ -377,7 +378,7 @@ while True:
     J += 1
     T = round(T+Dict_inv['DT'],2)
 
-
+#%%
 print(T)
 print('NAT',NAT,'NBT',NBT,'NV',NV,'NW',NW,'NA',NA,'NB',NB)
 plt.plot(L_T,L_HA,label='HA kas')
@@ -407,10 +408,21 @@ plt.xticks([-6,0,6,12,18,24,30])
 
 plt.figure()
 plt.plot(L_T,L_dH)
-plt.ylim([-0.8,0.8])
+plt.ylim([-0.4,0.2])
 plt.grid()
 plt.xticks([-6,0,6,12,18,24,30])
 
+#%% Read fortran uitvoer
+column_names = ['T','HV','HA','H5','HB','HW','HGEM','GGEM','GGEM-HGEM']
+dt_1 = pd.read_csv('Fort_uitv_1dt.out',names=column_names,index_col=False)
+dt_10 = pd.read_csv('Fort_uitv_10dt.out',names=column_names,index_col=False)
+
+plt.plot(dt_1["T"],dt_1["GGEM-HGEM"],label='Verval .FOR 1 dt')
+plt.plot(dt_10["T"],dt_10["GGEM-HGEM"],label='Verval .FOR 10 dt')
+#plt.plot(L_T,L_dH,label='Verval .py')
+plt.legend()
+plt.ylim([-0.4,0.2])
+#plt.xlim([0,2])
 #Uitvoer
 # T = tijd [s]
 # HV = waterstand kolkzijde voor spleet A [mNAP]
@@ -428,3 +440,4 @@ plt.xticks([-6,0,6,12,18,24,30])
 
 #OPmerking 27-09-24
 #Het lijkt mij vreemd dat spleet B meegroeit met H5. Met name het moment dat de golf spleet B bereiekt is gek. Er lijkt iets fout in NB in de eerste loop (ook de tweede)
+# %%

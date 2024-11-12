@@ -8,13 +8,13 @@
 # =====DECLARATIES========================================
 
 import numpy as np
-import pandas as pd
 import os
 from INTER import inter
 import math
 import matplotlib.pyplot as plt
+import pandas as pd
 
-Inv_naam = 'Test_invoer.IN'
+Inv_naam = 'Inv_Sam_nz.IN'
 
 T1 = np.zeros(21) #Tijdstabel [s]
 N1 = np.zeros(21) #golfhoogte kolkzijde ter plaatse van spleet A [m]
@@ -23,8 +23,8 @@ N2 = np.zeros(21) #golfhoogte kolkzijde ter plaatse van spleet ? [m]
 
 NV=NW=0
 
-QA = np.zeros(1001) #?
-QB = np.zeros(1001) #?
+QA = []#np.zeros(1001) #?
+QB = []#np.zeros(1001) #?
 G = 9.81 #Gravitatieversnelling [m/s^2]
 
 # =====INVOER=====================================================
@@ -76,7 +76,9 @@ NA = 0          #Gegenereerde golfhoogte punt A
 NB = 0          #Gegenereerde golfhoogte punt B
 NAT = 0         #Golfhoogte in punt A
 NBT = 0         #Golfhoogte in punt B
-Tot_A = Dict_inv['AO']#+(Dict_inv['BA']+Dict_inv['BB'])*(Dict_inv['HKI']-Dict_inv['ZK'])
+QA_dum = 0      #Iteratie debiet door spleet A
+QB_dum = 0      #Iteratie debiet door spleet B
+Tot_A = Dict_inv['AO']#Oppervlak spleet onder deur (spleet 3)
 
 
 # Length of array for waves
@@ -140,11 +142,12 @@ while True:
     #Berekenen waterstanden Spleet 1 (NV) en spleet 2 (NW)
     NV = inter(Dict_inv['NT1'],Dict_inv['T1'],Dict_inv['N1'],T)
     NW = inter(Dict_inv['NT1'],Dict_inv['T1'],Dict_inv['N1'],T-DTG)
-
+    
+    #if T == 16.78:
+    #    break
     #Lengte van de golf array (vanaf het moment dat de golf langstrekt)
     if J <= (N):
         P = 0
-
         #Inkomend debiet via het kaskanaal
         if J >= (NKAS):
             QAT = QB[J-NKAS]
@@ -153,178 +156,114 @@ while True:
         NAT = -QAT / (Dict_inv['BKAS']*CK) #Inkomende golfhoogte locatie A
         NBT = QBT / (Dict_inv['BKAS']*CK) #Inkomende golfhoogte locatie B
 
-        #Itereren tot juist benadering golfhoogte
-        while True:
-            P = P+1
-            NAO = NA
-            NBO = NB
-            QA[J] = (Dict_inv['MU'] * Dict_inv['BA'] * (Dict_inv['HKI'] - Dict_inv['ZK']) *
-                     math.copysign(1, NV - NA - NAT) * np.sqrt(2 * G * abs(NV - NA - NAT)) - QAT) 
-            QB[J] = (Dict_inv['MU'] * Dict_inv['BB'] * (Dict_inv['HKI'] - Dict_inv['ZK']) *
-                     math.copysign(1, (NB + NBT - NW)) * np.sqrt(2 * G * abs(NB + NBT - NW)) - QBT)
-            NAN = QA[J] / (Dict_inv['BKAS']*CK)
-            NBN = -QB[J] / (Dict_inv['BKAS']*CK)
-            NA = (1.8 * NAO + 0.2 * NAN) / 2
-            NB = (1.8 * NBO + 0.2 * NBN) / 2
-
-            if P >= 1000 or (abs(NAO-NA) <= 0.001 and abs(NBO-NB) <= 0.001):
-                break
-
-        HV = Dict_inv['HKI'] + NV #waterstand in de kolk
-        HA = HKAS + NA + NAT #waterstand bij spleet A. Waterstand KAS
-
-        if J >= 9 * NK:
-            H1 = HKAS + (QA[J - NK - 1] - QB[J - 9 * NK - 1]) / (Dict_inv['BKAS'] * CK)
-            H9 = HKAS + (QA[J - 9 * NK - 1] - QB[J - NK - 1]) / (Dict_inv['BKAS'] * CK)
-        elif J >= NK:
-            H1 = HKAS + QA[J - NK - 1] / (Dict_inv['BKAS'] * CK)
-            H9 = HKAS - QB[J - NK - 1] / (Dict_inv['BKAS'] * CK)
-        else:
-            H1 = HKAS
-            H9 = HKAS
-
-        if J >= 8 * NK:
-            H2 = HKAS + (QA[J - 2 * NK - 1] - QB[J - 8 * NK - 1]) / (Dict_inv['BKAS'] * CK)
-            H8 = HKAS + (QA[J - 8 * NK - 1] - QB[J - 2 * NK - 1]) / (Dict_inv['BKAS'] * CK)
-        elif J >= 2 * NK:
-            H2 = HKAS + QA[J - 2 * NK - 1] / (Dict_inv['BKAS'] * CK)
-            H8 = HKAS - QB[J - 2 * NK - 1] / (Dict_inv['BKAS'] * CK)
-        else:
-            H2 = HKAS
-            H8 = HKAS
-
-        if J >= 7 * NK:
-            H3 = HKAS + (QA[J - 3 * NK - 1] - QB[J - 7 * NK - 1]) / (Dict_inv['BKAS'] * CK)
-            H7 = HKAS + (QA[J - 7 * NK - 1] - QB[J - 3 * NK - 1]) / (Dict_inv['BKAS'] * CK)
-        elif J >= 3 * NK:
-            H3 = HKAS + QA[J - 3 * NK - 1] / (Dict_inv['BKAS'] * CK)
-            H7 = HKAS - QB[J - 3 * NK - 1] / (Dict_inv['BKAS'] * CK)
-        else:
-            H3 = HKAS
-            H7 = HKAS
-
-        if J >= 6 * NK:
-            H4 = HKAS + (QA[J - 4 * NK - 1] - QB[J - 6 * NK - 1]) / (Dict_inv['BKAS'] * CK)
-            H6 = HKAS + (QA[J - 6 * NK - 1] - QB[J - 4 * NK - 1]) / (Dict_inv['BKAS'] * CK)
-        elif J >= 4 * NK:
-            H4 = HKAS + QA[J - 4 * NK - 1] / (Dict_inv['BKAS'] * CK)
-            H6 = HKAS - QB[J - 4 * NK - 1] / (Dict_inv['BKAS'] * CK)
-        else:
-            H4 = HKAS
-            H6 = HKAS
-
-        if J >= 5*NK:
-            H5 = HKAS + (QA[J - 5 * NK - 1] - QB[J - 5 * NK - 1]) / (Dict_inv['BKAS'] * CK)
-        else:
-            H5 = HKAS
-
-        HB = HKAS + NB + NBT
-        HW = Dict_inv['HKI'] + NW
-
-        HGEM = (0.5*HA+H1 + H2 + H3 + H4 + H5 + H6 + H7 + H8 + H9+0.5*HB) / 10
-        GGEM = (0.5*NV+H1 + H2 + H3 + H4 + H5 + H6 + H7 + H8 + H9+0.5*NW) / 10
-
-        QAA = QA[J] + QAT
-        QBB = QB[J] + QBT        
-
-
     #De lengte array van de golf is al voorbij
-    else:
+    else:   
+        #print('T=',T,QBT, 'NBT=',NBT, 'NB=',NB, QB[len(QB)-1],QB_dum)
+        #if T == 12.90:
+        #    break
+        QAT = QB[len(QB)-NKAS] #N-NKAS is 1 hele golflengte geleden (door ck komt debiet van B ten tijde van (N-NKAS) nu aan bij A)
+        QBT = QA[len(QA)-NKAS]
 
-
-        print('T=',T,QBT, 'NBT=',NBT, 'NB=',NB, QB[len(QB)-1])
-        if T == 12.92:
-            break
-        QAT = QB[N-NKAS] #N-NKAS is 1 hele golflengte geleden (door ck komt debiet van B ten tijde van (N-NKAS) nu aan bij A)
-        QBT = QA[N-NKAS]
         #Inkomende golfhoogte door translatiegolf
         NAT = -QAT / (Dict_inv['BKAS']*CK)
         NBT = QBT / (Dict_inv['BKAS']*CK)
 
-        #if QBT > 0:
-        #    break
+    
+    max_iterations = 10000
+    tolerance = 0.001
 
-        for L in range(0,N):
-            #Alles debieten schuiven een stapje verder, op locatie N komt het nieuwe debiet
-            QA[L] = QA[L+1]
-            QB[L] = QB[L+1]
-        
-        P = 0
-        #Itereren tot juist benadering golfhoogte
-        while True:
-            P = P+1
+    NAO = 0
+    NBO = 0
+    #Itereren tot juist benadering golfhoogte 
+    for P in range(0,max_iterations+1):
+        QAO = QA_dum
+        QBO = QB_dum
+
+        QB_update = (-Dict_inv['MU'] * Dict_inv['BB'] * (Dict_inv['HKI'] - Dict_inv['ZK']) *
+                    math.copysign(1, NW - NB - NBT) * np.sqrt(2 * G * abs(NW - NB - NBT)) - QBT)
+        QA_update = (Dict_inv['MU'] * Dict_inv['BA'] * (Dict_inv['HKI'] - Dict_inv['ZK']) *
+                    math.copysign(1, NV - NA - NAT) * np.sqrt(2 * G * abs(NV - NA - NAT)) - QAT) 
+       
+        QA_dum = QA_update#0.1*QA_update + 0.9*QAO
+        QB_dum = QB_update#0.1*QB_update + 0.9*QBO
+
+        NAN = QA_dum / (Dict_inv['BKAS']*CK)
+        NA = 0.9 * NAO + 0.1 * NAN
+        NBN = -QB_dum / (Dict_inv['BKAS']*CK)
+        NB = 0.9 * NBO + 0.1 * NBN
+
+        #if  abs(NB - NBO) <= tolerance and abs(QB_dum - QBO) <= tolerance and abs(NA - NAO) <= tolerance and abs(QA_dum - QAO) <= tolerance:
+        if  abs(NB - NBO) <= tolerance and abs(NA - NAO) <= tolerance:
+            break
+        else:
             NAO = NA
             NBO = NB
+    else:
+        print('No value found')
+        print(f'T:{T},NA:{NA},NB:{NB},QA:{QA_dum},QB:{QB_dum},abs(NA - NAO):{abs(NA - NAO)},abs(NB - NBO):{abs(NB - NBO)}')
+    
+    #if T == 4:
+    #    break
 
-            #
-            QA[N] = (Dict_inv['MU'] * Dict_inv['BA'] * (Dict_inv['HKI'] - Dict_inv['ZK']) *
-                     math.copysign(1, NV - NA - NAT) * np.sqrt(2 * G * abs(NV - NA - NAT)) - QAT) 
-            QB[N] = (-Dict_inv['MU'] * Dict_inv['BB'] * (Dict_inv['HKI'] - Dict_inv['ZK']) *
-                     math.copysign(1, (NW-NB-NBT)) * np.sqrt(2 * G * abs(NW-NB-NBT)) - QBT)
-            NAN = QA[N] / (Dict_inv['BKAS']*CK)
-            NBN = -QB[N] / (Dict_inv['BKAS']*CK)
-            NA = (1.8 * NAO + 0.2 * NAN) / 2
-            NB = (1.8 * NBO + 0.2 * NBN) / 2
+    QA.append(QA_dum)
+    QB.append(QB_dum) 
 
-            if P >= 1000 or (abs(NAO-NA) <= 0.001 and abs(NBO-NB) <= 0.001):
-                break
+    HV = Dict_inv['HKI'] + NV #waterstand in de kolk
+    HA = HKAS + NA + NAT #waterstand bij spleet A. Waterstand KAS
 
-        HV = Dict_inv['HKI'] + NV #waterstand in de kolk
-        HA = HKAS + NA + NAT #waterstand bij spleet A
+    if J >= 9 * NK:
+        H1 = HKAS + (QA[J - NK] - QB[J - 9 * NK]) / (Dict_inv['BKAS'] * CK)
+        H9 = HKAS + (QA[J - 9 * NK] - QB[J - NK]) / (Dict_inv['BKAS'] * CK)
+    elif J >= NK:
+        H1 = HKAS + QA[J - NK] / (Dict_inv['BKAS'] * CK)
+        H9 = HKAS - QB[J - NK] / (Dict_inv['BKAS'] * CK)
+    else:
+        H1 = HKAS
+        H9 = HKAS
 
-        if J >= 9 * NK:
-            H1 = HKAS + (QA[N - NK] - QB[N - 9 * NK]) / (Dict_inv['BKAS'] * CK)
-            H9 = HKAS + (QA[N - 9 * NK] - QB[N - NK]) / (Dict_inv['BKAS'] * CK)
-        elif J >= NK:
-            H1 = HKAS + QA[N - NK] / (Dict_inv['BKAS'] * CK)
-            H9 = HKAS - QB[N - NK] / (Dict_inv['BKAS'] * CK)
-        else:
-            H1 = HKAS
-            H9 = HKAS
+    if J >= 8 * NK:
+        H2 = HKAS + (QA[J - 2 * NK] - QB[J - 8 * NK]) / (Dict_inv['BKAS'] * CK)
+        H8 = HKAS + (QA[J - 8 * NK] - QB[J - 2 * NK]) / (Dict_inv['BKAS'] * CK)
+    elif J >= 2 * NK:
+        H2 = HKAS + QA[J - 2 * NK] / (Dict_inv['BKAS'] * CK)
+        H8 = HKAS - QB[J - 2 * NK] / (Dict_inv['BKAS'] * CK)
+    else:
+        H2 = HKAS
+        H8 = HKAS
 
-        if J >= 8 * NK:
-            H2 = HKAS + (QA[N - 2 * NK] - QB[N - 8 * NK]) / (Dict_inv['BKAS'] * CK)
-            H8 = HKAS + (QA[N - 8 * NK] - QB[N - 2 * NK]) / (Dict_inv['BKAS'] * CK)
-        elif J >= 2 * NK:
-            H2 = HKAS + QA[N - 2 * NK] / (Dict_inv['BKAS'] * CK)
-            H8 = HKAS - QB[N - 2 * NK] / (Dict_inv['BKAS'] * CK)
-        else:
-            H2 = HKAS
-            H8 = HKAS
+    if J >= 7 * NK:
+        H3 = HKAS + (QA[J - 3 * NK] - QB[J - 7 * NK]) / (Dict_inv['BKAS'] * CK)
+        H7 = HKAS + (QA[J - 7 * NK] - QB[J - 3 * NK]) / (Dict_inv['BKAS'] * CK)
+    elif J >= 3 * NK:
+        H3 = HKAS + QA[J - 3 * NK] / (Dict_inv['BKAS'] * CK)
+        H7 = HKAS - QB[J - 3 * NK] / (Dict_inv['BKAS'] * CK)
+    else:
+        H3 = HKAS
+        H7 = HKAS
 
-        if J >= 7 * NK:
-            H3 = HKAS + (QA[N - 3 * NK ] - QB[N - 7 * NK]) / (Dict_inv['BKAS'] * CK)
-            H7 = HKAS + (QA[N - 7 * NK ] - QB[N - 3 * NK]) / (Dict_inv['BKAS'] * CK)
-        elif J >= 3 * NK:
-            H3 = HKAS + QA[N - 3 * NK ] / (Dict_inv['BKAS'] * CK)
-            H7 = HKAS - QB[N - 3 * NK ] / (Dict_inv['BKAS'] * CK)
-        else:
-            H3 = HKAS
-            H7 = HKAS
+    if J >= 6 * NK:
+        H4 = HKAS + (QA[J - 4 * NK] - QB[J - 6 * NK]) / (Dict_inv['BKAS'] * CK)
+        H6 = HKAS + (QA[J - 6 * NK] - QB[J - 4 * NK]) / (Dict_inv['BKAS'] * CK)
+    elif J >= 4 * NK:
+        H4 = HKAS + QA[J - 4 * NK] / (Dict_inv['BKAS'] * CK)
+        H6 = HKAS - QB[J - 4 * NK] / (Dict_inv['BKAS'] * CK)
+    else:
+        H4 = HKAS
+        H6 = HKAS
 
-        if J >= 6 * NK:
-            H4 = HKAS + (QA[N - 4 * NK] - QB[N - 6 * NK]) / (Dict_inv['BKAS'] * CK)
-            H6 = HKAS + (QA[N - 6 * NK ] - QB[N - 4 * NK]) / (Dict_inv['BKAS'] * CK)
-        elif J >= 4 * NK:
-            H4 = HKAS + QA[N - 4 * NK] / (Dict_inv['BKAS'] * CK)
-            H6 = HKAS - QB[N - 4 * NK] / (Dict_inv['BKAS'] * CK)
-        else:
-            H4 = HKAS
-            H6 = HKAS
+    if J >= 5*NK:
+        H5 = HKAS + (QA[J - 5 * NK] - QB[J - 5 * NK]) / (Dict_inv['BKAS'] * CK)
+    else:
+        H5 = HKAS
 
-        if J >= 5*NK:
-            H5 = HKAS + (QA[N - 5 * NK] - QB[N - 5 * NK]) / (Dict_inv['BKAS'] * CK)
-        else:
-            H5 = HKAS
+    HB = HKAS + NB + NBT
+    HW = Dict_inv['HKI'] + NW
 
-        HB = HKAS + NB + NBT
-        HW = Dict_inv['HKI'] + NW
+    HGEM = (0.5*HA+H1 + H2 + H3 + H4 + H5 + H6 + H7 + H8 + H9+0.5*HB) / 10
 
-        HGEM = HKAS+(0.5*HA+H1 + H2 + H3 + H4 + H5 + H6 + H7 + H8 + H9+0.5*HB) / 10
-
-        QAA = QA[N] + QAT
-        QBB = QB[N] + QBT        
-
+    QAA = QA[J] + QAT
+    QBB = QB[J] + QBT     
+    
     # Constants
     DTT = DTG / 10
 
@@ -345,7 +284,7 @@ while True:
     # Water level at the kas side of the door
     HKAS = HKAS - (Dict_inv['MU'] * Tot_A * np.sign(HGEM - GGEM) *
                     np.sqrt(2 * G * abs(HGEM - GGEM)) / (Dict_inv['BKAS'] * Dict_inv['LKAS'])) * Dict_inv['DT']
-
+    
     dH = GGEM-HGEM
 
     #Toeschrijven uitvoer
@@ -371,14 +310,14 @@ while True:
     L_H8.append(H8)
     L_H9.append(H9)
 
+    J += 1
+    T = round(T+Dict_inv['DT'],2)
 
     # Calculation up to end time
     if T >= Dict_inv['TEND']:
         break
 
-    J += 1
-    T = round(T+Dict_inv['DT'],2)
-
+#%%
 print(T)
 print('NAT',NAT,'NBT',NBT,'NV',NV,'NW',NW,'NA',NA,'NB',NB)
 plt.plot(L_T,L_HA,label='HA kas')
@@ -405,12 +344,29 @@ plt.plot(L_T,L_HW,label='Wl kolk tpv B')
 plt.ylim([-0.4,1.2])
 plt.grid()
 plt.xticks([-6,0,6,12,18,24,30])
+plt.legend()
 
 plt.figure()
-plt.plot(L_T,L_dH)
-plt.ylim([-0.8,0.8])
+plt.plot(L_T,L_dH,label='Verval')
+#plt.ylim([-0.4,0.2])
+plt.xlim([1,2])
 plt.grid()
-plt.xticks([-6,0,6,12,18,24,30])
+plt.legend()
+#plt.xticks([-6,0,6,12,18,24,30])
+#%%
+plt.figure()
+plt.plot(L_T,L_HA,label='WL Kas zijde A')
+plt.plot(L_T,L_HV,label='WL kolk zijde A')
+plt.plot(L_T,L_HB,label='WL kaszijde B')
+plt.plot(L_T,L_H2)
+#plt.plot(L_T,L_H3)
+#plt.plot(L_T,L_H4)
+#plt.plot(L_T,L_H5)
+#plt.plot(L_T,L_H6)
+#plt.plot(L_T,L_H7)
+#plt.plot(L_T,L_H8)
+plt.plot(L_T,L_H9)
+plt.legend()
 
 #%% Read fortran uitvoer
 column_names = ['T','HV','HA','H5','HB','HW','HGEM','GGEM','GGEM-HGEM']
@@ -418,11 +374,11 @@ dt_1 = pd.read_csv('Fort_uitv_1dt.out',names=column_names,index_col=False)
 dt_10 = pd.read_csv('Fort_uitv_10dt.out',names=column_names,index_col=False)
 
 plt.plot(dt_1["T"],dt_1["GGEM-HGEM"],label='Verval .FOR 1 dt')
-plt.plot(dt_10["T"],dt_10["GGEM-HGEM"],label='Verval .FOR 10 dt')
+#plt.plot(dt_10["T"],dt_10["GGEM-HGEM"],label='Verval .FOR 10 dt')
 plt.plot(L_T,L_dH,label='Verval .py')
 plt.legend()
-plt.ylim([-0.1,0.1])
-plt.xlim([-1,2])
+#plt.ylim([-0.1,0.1])
+plt.xlim([0,30])
 
 #Uitvoer
 # T = tijd [s]
@@ -441,3 +397,4 @@ plt.xlim([-1,2])
 
 #OPmerking 27-09-24
 #Het lijkt mij vreemd dat spleet B meegroeit met H5. Met name het moment dat de golf spleet B bereiekt is gek. Er lijkt iets fout in NB in de eerste loop (ook de tweede)
+# %%
