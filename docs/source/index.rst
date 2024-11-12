@@ -1,28 +1,29 @@
 LOCKGATE
 ===================================
 
-This is the documentation for **LOCKGATE**, a 1D `Deltares <https://www.deltares.nl/>`_ tool for calculating the head difference over an opened lockgate (when the door is in the gate recess).  LOCKGATE is able to calculate the head difference over time for a gate with vertical openings at the sides as well as for a horizontal opening underneath the door. LOCKGATE was originally developed by Delft Hydraulics in 1990 [1] and updated in 1994 [3]. The latter version was converted from the original Fortran code to the currently available Python code in 2024 and contains the same functionality as version KASGOLF 1994. 
+This is the documentation for **KASGOLF**, a 1D `Deltares <https://www.deltares.nl/>`_ tool for calculating the head difference over an opened lock gate (when the gate is located in the gate recess).  KASGOLF is able to calculate the head difference over time for a gate with vertical openings at the sides as well as for a horizontal opening underneath the door. KASGOLF was originally developed by Delft Hydraulics in 1994 as part of LOCKGATE 2 [1]. The code was converted from the original Fortran code to the currently available Python code in 2024 and contains the same functionality as version KASGOLF 1994. 
 
 .. note::
 
-   SPUIS is based on the Dutch word "spuisluis", meaning "discharge sluice" or "sluice gate" in English.
+   Many version of LOCKGATE have been created and mentioned in literature [1], [2] en [3]. LOCKGATE 2 contains a set of codes that calculates the waveforces on a lock gate. Part of LOCKGATE 2 is the code KASGOLF, also refered to as LOCKGATE5 in [3].
 
-The implementation of SPUIS was tested by comparison with measurements from physical scale model tests of discharge sluices Dintelsas and Crèvecoeur in the Netherlands [1]. In the past, SPUIS has been applied to support the design of hydraulic structures, such as the discharge sluice in Nieuwe Statenzijl (1987) [2], Oosterhout (1995) [4], and the Brouwersdam (2018) [4] in the Netherlands.
 
-The SPUIS documentation covers the following topics:
-1. The theory on which SPUIS is based,
+##################
+
+The KASGOLF code has been mentioned in the ‘Krachten op puntdeuren en enkele draaideuren’ [3] and examples of calculation results are shared [1] & [3]. Eventhough, the code has never been validated with measurement data [2]. 
+
+The KASGOLF documentation covers the following topics:
+1. The theory on which KASGOLF is based,
 2. An example calculation,
-3. A tutorial for setting up a SPUIS schematization,
-4. Instructions for running SPUIS on your computer,
+3. A tutorial for setting up a KASGOLF schematization,
+4. Instructions for running KASGOLF on your computer,
 5. An overview of the Python code and the functionality of each subroutine.
 
 Literature
 -----------
-[1] WL | Delft Hydraulics (1986). ‘Berekening van de afvoer van spuisluizen met behulp van een rekenmodel.’ Report R2125.
-[2] WL | Delft Hydraulics (1987). ‘Sluiscomplex Nieuwe Statenzijl - Hydraulische aspecten van de schut- en spuisluis.’ Report Q0485.
-[3] WL | Delft Hydraulics (1989). ‘Berekening van de afvoer van spuisluizen bij schietend water situaties.’ Report Q0331.
-[4] WL | Delft Hydraulics (1995). ‘Aflaatwerk en gemaal te Oosterhout.’ Report Q1952.
-[5] Deltares (2018). ‘Bepaling afvoercoëfficiënt doorlaatmiddel Brouwersdam.’ Report 11202901-002-ZKS-0002.
+[1] WL | Delft Hydraulics (1994). ‘Krachten op puntdeuren en enkele draaideuren’ Report Q1442.
+[2] WL | Delft Hydraulics (1997). ‘Sluisprogrammatuur REN’ Report Q2317.
+[3] Ministerie van Verkeer en Waterstaat, Rijkswaterstaat, Bouwdienst (RWS, BD) (2000). ‘Handboek voor het ontwerpen van schutsluizen’.
 
 .. toctree::
    :maxdepth: 1
