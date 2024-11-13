@@ -5,7 +5,7 @@ This is the documentation for **KASGOLF**, a 1D `Deltares <https://www.deltares.
 
 .. note::
 
-   Many version of LOCKGATE have been created and mentioned in literature [1], [2] en [3]. LOCKGATE 2 contains a set of codes that calculates the waveforces on a lock gate. Part of LOCKGATE 2 is the code KASGOLF, also refered to as LOCKGATE5 in [3].
+   Many version of LOCKGATE have been created and mentioned in literature [1], [2] en [3]. LOCKGATE 2 contains a set of codes that calculates the waveforces on a lock gate. Part of LOCKGATE 2 is the code KASGOLF, also refered to as 'LOCKGATE5' in [3].
 
 
 ##################
