@@ -7,7 +7,7 @@
 Theory
 ===========
 
-
+Text
 
 
 .. image:: ../images/rekenschema.png
