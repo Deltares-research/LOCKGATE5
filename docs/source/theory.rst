@@ -22,4 +22,4 @@ To run a simulation with KASGOLF, the water depth of the lock and the dimensions
 
  that has vertical openings on both sides of the gate as well as an horizontal opening underneath the gate
 
-.. image:: ../images/overzicht_kas_kolk.png.png
+.. image:: ../images/overzicht_kas_kolk.png
