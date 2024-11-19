@@ -1,5 +1,11 @@
-KASGOLF
+LOCKGATE2
 ===================================
+The software LOCKGATE has a wide variety of programs that calculate forces or any other hydrodynamic effects on lock gates in various conditions, hence the name. LOCKGATE contains two sets of codes under the names LOCKGATE1 (closing or opening of lock gates subjected to flow or hydraulic head) and LOCKGATE2 (effects related to sailing ships or windwaves). This documentation specifically adresses the codes that are available within the set LOCKGATE2.
+
+LOCKGATE2 contains the codes KASGOLF and WINDGOLF. On this page information about both codes can be found. KASGOLF is extensively discussed in this readthedocs and a user guide to get started with the code is provided. WINDGOLF will shortly be addressed at the bottom of this page. Reason is that the theory behind WINDGOLF is outdated. Therefore, theory behind this code is limited to what is shown at the bottom of this page.  
+
+KASGOLF
+========================
 
 .. note::
 
@@ -42,3 +48,6 @@ Literature
    tutorial
    code
    support
+
+   WINDGOLF
+========================

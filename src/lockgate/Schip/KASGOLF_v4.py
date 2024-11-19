@@ -9,7 +9,6 @@
 
 import numpy as np
 import os
-from INTER import inter
 import math
 import matplotlib.pyplot as plt
 import pandas as pd

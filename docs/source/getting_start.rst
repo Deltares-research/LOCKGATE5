@@ -21,3 +21,6 @@ Typical end-users will use the function :py:func:`runKasgolf` to run a KASGOLF s
 
 Running a simulation
 --------------------------
+When running :py:func:`runKasgolf` one output figure will be generated. This figure shows the head difference over the gate throughout time. An example of the output figure is shown below:
+
+.. image:: ../images/example_uitvoer_code.png
