@@ -37,7 +37,7 @@ Literature
    :caption: Contents:
 
    theory 
-   getting-started
+   getting_started
    examples
    tutorial
    code
