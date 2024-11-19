@@ -1,3 +1,5 @@
+.. _installatie:
+
 LOCKGATE2
 ===================================
 The software LOCKGATE has a wide variety of programs that calculate forces or any other hydrodynamic effects on lock gates in various conditions, hence the name. LOCKGATE contains two sets of codes under the names LOCKGATE1 (closing or opening of lock gates subjected to flow or hydraulic head) and LOCKGATE2 (effects related to sailing ships or windwaves). This documentation specifically adresses the codes that are available within the set LOCKGATE2.
