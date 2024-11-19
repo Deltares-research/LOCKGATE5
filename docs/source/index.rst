@@ -4,15 +4,16 @@ The software LOCKGATE has a wide variety of programs that calculate forces or an
 
 LOCKGATE2 contains the codes KASGOLF and WINDGOLF. On this page information about both codes can be found. KASGOLF is extensively discussed in this readthedocs and a user guide to get started with the code is provided. WINDGOLF will shortly be addressed at the bottom of this page. Reason is that the theory behind WINDGOLF is outdated. Therefore, theory behind this code is limited to what is shown at the bottom of this page.  
 
-KASGOLF
-========================
 
 .. note::
 
-   Caution! Currently, the translation of the Fortran code of KASGOLF to Python code is still under construction. That means that the code of KASGOLF is not yet ready to be openly published. This read the docs is written as if the code has been finalised and published by Deltares. The actual completion of this process is planned for the future.
+   Caution! Currently, the translation of the Fortran codes provided in this readthedocs to Python code is still under construction. That means that the codes is not yet ready to be openly published. This read the docs is written as if the code has been finalised and published by Deltares, but is not the case! The actual completion of this process is planned for the future.
 
 
 ##################
+
+KASGOLF
+========================
 
 This is the documentation for **KASGOLF**, a 1D `Deltares <https://www.deltares.nl/>`_ tool for calculating the effect of a wave originating from a ship sailing by on an opened lock gate (when the gate is located in the gate recess (in dutch this word is 'deurkas')).  KASGOLF is able to calculate the head difference over time for a gate with vertical openings at the sides as well as for a horizontal opening underneath the door. KASGOLF was originally developed by Delft Hydraulics in 1994 as part of LOCKGATE 2 [1]. The code was converted from the original Fortran code to the currently available Python code in 2024 and contains the same functionality as version KASGOLF 1994. 
 
@@ -43,11 +44,12 @@ Literature
    :caption: Contents:
 
    theory 
-   getting_started
+   getting-started
    examples
    tutorial
    code
    support
 
-   WINDGOLF
+WINDGOLF
 ========================
+Text Ashraf....
