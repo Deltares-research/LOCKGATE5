@@ -14,7 +14,7 @@ import math
 import matplotlib.pyplot as plt
 import pandas as pd
 
-Inv_naam = 'Inv_Sam_nz.IN'
+Inv_naam = 'Inv_Sam_nz_OG.IN'
 
 T1 = np.zeros(21) #Tijdstabel [s]
 N1 = np.zeros(21) #golfhoogte kolkzijde ter plaatse van spleet A [m]
@@ -140,14 +140,13 @@ Jst_golf = J
 while True:
 
     #Berekenen waterstanden Spleet 1 (NV) en spleet 2 (NW)
-    NV = inter(Dict_inv['NT1'],Dict_inv['T1'],Dict_inv['N1'],T)
-    NW = inter(Dict_inv['NT1'],Dict_inv['T1'],Dict_inv['N1'],T-DTG)
+    #NV = inter(Dict_inv['NT1'],Dict_inv['T1'],Dict_inv['N1'],T)
+    #NW = inter(Dict_inv['NT1'],Dict_inv['T1'],Dict_inv['N1'],T-DTG)
+    NV = np.interp(T,Dict_inv['T1'],Dict_inv['N1'])
+    NW = np.interp(T-DTG,Dict_inv['T1'],Dict_inv['N1'])
     
-    #if T == 16.78:
-    #    break
     #Lengte van de golf array (vanaf het moment dat de golf langstrekt)
     if J <= (N):
-        P = 0
         #Inkomend debiet via het kaskanaal
         if J >= (NKAS):
             QAT = QB[J-NKAS]
@@ -174,11 +173,15 @@ while True:
 
     NAO = 0
     NBO = 0
+    
+    #if T == 6.44:
+    #    break
     #Itereren tot juist benadering golfhoogte 
     for P in range(0,max_iterations+1):
         QAO = QA_dum
         QBO = QB_dum
-
+        NAO = NA
+        NBO = NB
         QB_update = (-Dict_inv['MU'] * Dict_inv['BB'] * (Dict_inv['HKI'] - Dict_inv['ZK']) *
                     math.copysign(1, NW - NB - NBT) * np.sqrt(2 * G * abs(NW - NB - NBT)) - QBT)
         QA_update = (Dict_inv['MU'] * Dict_inv['BA'] * (Dict_inv['HKI'] - Dict_inv['ZK']) *
@@ -191,16 +194,14 @@ while True:
         NA = 0.9 * NAO + 0.1 * NAN
         NBN = -QB_dum / (Dict_inv['BKAS']*CK)
         NB = 0.9 * NBO + 0.1 * NBN
-
+        
         #if  abs(NB - NBO) <= tolerance and abs(QB_dum - QBO) <= tolerance and abs(NA - NAO) <= tolerance and abs(QA_dum - QAO) <= tolerance:
-        if  abs(NB - NBO) <= tolerance and abs(NA - NAO) <= tolerance:
+        if  (abs(NB - NBO) <= tolerance and abs(NA - NAO) <= tolerance):
+            #print('Doet het nu')
             break
-        else:
-            NAO = NA
-            NBO = NB
+
     else:
-        print('No value found')
-        print(f'T:{T},NA:{NA},NB:{NB},QA:{QA_dum},QB:{QB_dum},abs(NA - NAO):{abs(NA - NAO)},abs(NB - NBO):{abs(NB - NBO)}')
+        print(f'T:{T}; No value found')
     
     #if T == 4:
     #    break
