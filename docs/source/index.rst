@@ -1,5 +1,3 @@
-.. _installatie:
-
 LOCKGATE2
 ===================================
 The software LOCKGATE has a wide variety of programs that calculate forces or any other hydrodynamic effects on lock gates in various conditions, hence the name. LOCKGATE contains two sets of codes under the names LOCKGATE1 (closing or opening of lock gates subjected to flow or hydraulic head) and LOCKGATE2 (effects related to sailing ships or windwaves). This documentation specifically adresses the codes that are available within the set LOCKGATE2.
@@ -15,7 +13,7 @@ LOCKGATE2 contains the codes KASGOLF and WINDGOLF. On this page information abou
 ##################
 
 KASGOLF
---------------------
+===========
 
 This is the documentation for **KASGOLF**, a 1D `Deltares <https://www.deltares.nl/>`_ tool for calculating the effect of a wave originating from a ship sailing by on an opened lock gate (when the gate is located in the gate recess (in dutch this word is 'deurkas')).  KASGOLF is able to calculate the head difference over time for a gate with vertical openings at the sides as well as for a horizontal opening underneath the door. KASGOLF was originally developed by Delft Hydraulics in 1994 as part of LOCKGATE 2 [1]. The code was converted from the original Fortran code to the currently available Python code in 2024 and contains the same functionality as version KASGOLF 1994. 
 
@@ -47,11 +45,11 @@ Literature
 
    theory 
    getting-started
-   examples
+   example
    tutorial
    code
    support
 
 WINDGOLF
---------------------
+===========
 Text Ashraf....

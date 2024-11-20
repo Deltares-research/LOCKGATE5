@@ -268,15 +268,15 @@ while True:
     DTT = DTG / 10
 
     # Calling the inter function for water levels at the lock side
-    G1 = inter(Dict_inv['NT1'], Dict_inv['T1'], Dict_inv['N1'], T - 1 * DTT)
-    G2 = inter(Dict_inv['NT1'], Dict_inv['T1'], Dict_inv['N1'], T - 2 * DTT)
-    G3 = inter(Dict_inv['NT1'], Dict_inv['T1'], Dict_inv['N1'], T - 3 * DTT)
-    G4 = inter(Dict_inv['NT1'], Dict_inv['T1'], Dict_inv['N1'], T - 4 * DTT)
-    G5 = inter(Dict_inv['NT1'], Dict_inv['T1'], Dict_inv['N1'], T - 5 * DTT)
-    G6 = inter(Dict_inv['NT1'], Dict_inv['T1'], Dict_inv['N1'], T - 6 * DTT)
-    G7 = inter(Dict_inv['NT1'], Dict_inv['T1'], Dict_inv['N1'], T - 7 * DTT)
-    G8 = inter(Dict_inv['NT1'], Dict_inv['T1'], Dict_inv['N1'], T - 8 * DTT)
-    G9 = inter(Dict_inv['NT1'], Dict_inv['T1'], Dict_inv['N1'], T - 9 * DTT)
+    G1 = np.interp(T - 1 * DTT,Dict_inv['T1'], Dict_inv['N1'])
+    G2 = np.interp(T - 2 * DTT,Dict_inv['T1'], Dict_inv['N1'])
+    G3 = np.interp(T - 3 * DTT,Dict_inv['T1'], Dict_inv['N1'])
+    G4 = np.interp(T - 4 * DTT,Dict_inv['T1'], Dict_inv['N1'])
+    G5 = np.interp(T - 5 * DTT,Dict_inv['T1'], Dict_inv['N1'])
+    G6 = np.interp(T - 6 * DTT,Dict_inv['T1'], Dict_inv['N1'])
+    G7 = np.interp(T - 7 * DTT,Dict_inv['T1'], Dict_inv['N1'])
+    G8 = np.interp(T - 8 * DTT,Dict_inv['T1'], Dict_inv['N1'])
+    G9 = np.interp(T - 9 * DTT,Dict_inv['T1'], Dict_inv['N1'])
 
     # Calculating the average water level in kolk
     GGEM = Dict_inv['HKI'] + (0.5 * NV + G1 + G2 + G3 + G4 + G5 + G6 + G7 + G8 + G9 + 0.5 * NW) / 10 
@@ -379,6 +379,18 @@ plt.plot(L_T,L_dH,label='Verval .py')
 plt.legend()
 #plt.ylim([-0.1,0.1])
 plt.xlim([0,30])
+
+#Readthedocs fig
+#%% Read fortran uitvoer
+plt.figure(figsize=(8, 4))
+column_names = ['T','HV','HA','H5','HB','HW','HGEM','GGEM','GGEM-HGEM']
+plt.plot(L_T,L_dH)
+plt.legend()
+plt.xlim([-6,30])
+plt.grid()
+plt.xticks([-6,0,6,12,18,24,30])
+plt.ylabel('Verval [m]')
+plt.xlabel('Tijd [s]')
 
 #Uitvoer
 # T = tijd [s]
