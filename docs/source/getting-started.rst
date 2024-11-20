@@ -21,6 +21,7 @@ Typical end-users will use the function :py:func:`runKasgolf` to run a KASGOLF s
 
 Running a simulation
 --------------------------
-When running :py:func:`runKasgolf` one output figure will be generated. This figure shows the hydraulic head over the gate throughout time. An example of the output figure is shown below:
+Upon running a simulation with :py:func:`runKasgolf` a file explorer window will be opened that allows you to select one input file (``.in``) that is required for the simulation which describes the lock and gate characteristics. The input file already includes the decision for the method that is used to calculate the propagation velocity of the wave in the lock chamber (translatory wave (M0=0) or using the velocity of a passing ship (M0=1)). An overview of the input file is provided in the figure below. 
 
-.. image:: ../images/example_uitvoer_code.png
+.. image:: ../images/example_invoer.png
+
