@@ -21,3 +21,9 @@ For the calculation of these waterlevels, the length of the gate is divided in 1
 To run a simulation with KASGOLF, the water depth of the lock and the dimensions of the gate, gate recess and openings need to be inserted in the model. The wave height can be inserted as a time array. For the wave propagation velocity in the lock chamber the user of the model can choose between the propagation velocity of the translatory wave or the sailing velocity of the ship. The propagation velocity of the translatory wave is based on linear wave theory. When chosen for the second option, the wave propagation velocity for the lock chamber can differ for that in the gate recess.
 
 .. image:: ../images/overzicht_kas_kolk.png
+
+.. note::
+
+   As can be seen in the figure above, instability occurs in the calculated hydraulic head. This is numerical instability from the code caused by the iteration of the discharge and waterheight of the translatory wave. Later in this documentation this instability will be analysed.
+
+##################

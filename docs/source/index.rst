@@ -48,6 +48,7 @@ Literature
    example
    tutorial
    code
+   sensitivity-analysis
    support
 
 WINDGOLF
