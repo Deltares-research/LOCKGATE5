@@ -81,8 +81,6 @@ with open(Inv_naam, 'r') as file:
                     value = int(value)
             Dict_inv[key] = value
 
-Dict_inv['NT1'] = int(Dict_inv['NT1'])
-
 # Lengte array voor golven
 J = 0
 K = 0
@@ -108,7 +106,7 @@ else:
 
 #Check of de vaarsnelheid groter is dan de loopsnelheid translatiegolf. Zo niet, kies andere vaarsnelheid
 if Dict_inv['M0'] != 0 and Dict_inv['VS'] < CK:
-    raise ValueError(f'Error! Sailing velocity ship too low! Increase `VS` to a value equal or larger than {CK} [m/s] or change M0 from 1 to 0 to calculate the wave propagation velocity based on waterdepth!')
+    raise ValueError(f'Error! Sailing velocity ship too low! Increase `VS` to >= {math.ceil(CK * 100) / 100} [m/s] or change M0 from 1 to 0 to calculate the wave propagation velocity based on waterdepth!')
 
 
 NKASR = Dict_inv['LKAS'] / CK / Dict_inv['DT'] #Aantal tijdstappen voor golf langs gehele kas
