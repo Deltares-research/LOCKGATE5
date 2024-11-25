@@ -106,6 +106,11 @@ if Dict_inv['M0'] == 0:
 else:
     DTG = Dict_inv['LKK'] / Dict_inv['VS']           #looptijd golf in kas bij vaarsnelheid (M0 == 1)
 
+#Check of de vaarsnelheid groter is dan de loopsnelheid translatiegolf. Zo niet, kies andere vaarsnelheid
+if Dict_inv['M0'] != 0 and Dict_inv['VS'] < CK:
+    raise ValueError(f'Error! Sailing velocity ship too low! Increase `VS` to a value equal or larger than {CK} [m/s] or change M0 from 1 to 0 to calculate the wave propagation velocity based on waterdepth!')
+
+
 NKASR = Dict_inv['LKAS'] / CK / Dict_inv['DT'] #Aantal tijdstappen voor golf langs gehele kas
 NKAS = int(round(NKASR))
 NK = int(round(NKAS / 10))
@@ -400,7 +405,7 @@ plt.legend()
 plt.xlim([0,30])
 
 #Readthedocs fig
-#%% Read fortran uitvoer
+#%% Python output figure
 plt.figure(figsize=(8, 4))
 column_names = ['T','HV','HA','H5','HB','HW','HGEM','GGEM','GGEM-HGEM']
 plt.plot(L_T,L_dH)
@@ -410,6 +415,12 @@ plt.grid()
 plt.xticks([-6,0,6,12,18,24,30])
 plt.ylabel('Verval [m]')
 plt.xlabel('Tijd [s]')
+
+directory, file_name = os.path.split(in_file)
+output_file = os.path.join(directory, os.path.splitext(file_name)[0] + '.png')
+
+
+plt.savefig(f'{output_file}')
 
 #Uitvoer
 # T = tijd [s]

@@ -10,11 +10,18 @@ This example demonstrates the capability of the KASGOLF code by applying it to a
 
 .. image:: ../images/example_berekening.png
 
-The result of schematizing the example lock will be generation by the code and shown in one figure. This figure shows the hydraulic head over the lock gate throughout time. The output file of the example for the previously schematized lock is shown in the figure below:
+The result of schematizing the example lock will be generation by the code and shown in one figure. This figure shows the hydraulic head over the lock gate throughout time. The output png figure is stored in the same directory and with the same name of the input file. The output figure of the previously schematized example is shown in the figure below:
 
 .. image:: ../images/example_uitvoer_code.png
+
+.. note::
+
+   As can be seen in the figure above, instability occurs in the calculated hydraulic head. This is numerical instability from the code caused by the iteration of the discharge and waterheight of the translatory wave. Later in this documentation this instability will be analysed.
+
+##################
 
 The input file that was used for the calculation of this example case is shown below.
 
 .. literalinclude:: ../input/Inv_Sam_nz_OG.IN
    :language: none
+   
