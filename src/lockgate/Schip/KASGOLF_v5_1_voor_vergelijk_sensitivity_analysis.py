@@ -83,7 +83,7 @@ with open(Inv_naam, 'r') as file:
 
 uitvoer_set = pd.DataFrame()
 
-set_values = [1,0.5,2]
+set_values = [0]#,0.01,0.10]#[0,1,2]
 set_values2 = [0,1]
 for i in range(0,len(set_values)):
 
@@ -91,18 +91,17 @@ for i in range(0,len(set_values)):
     Dict_inv['VS'] = Dict_inv['VS'] #set_values[i]#
     Dict_inv['M0'] = Dict_inv['M0'] #set_values2[i]#
     #test2
-    Dict_inv['BKAS'] = set_values[i]#Dict_inv['BKAS'] #
+    Dict_inv['BKAS'] = Dict_inv['BKAS'] #set_values[i]#
     #test3
     Dict_inv['BB'] = Dict_inv['BB'] #set_values[i]#
-    Dict_inv['BA'] = Dict_inv['BA'] #0.5#set_values[i]#
-
+    Dict_inv['BA'] = Dict_inv['BA'] #set_values[i]#
     #Test4
-    Dict_inv['AO'] = Dict_inv['AO']
+    Dict_inv['AO'] = Dict_inv['AO']#set_values[i]#
     #Test5
-    Dict_inv['DT'] = Dict_inv['DT']
+    Dict_inv['DT'] = Dict_inv['DT']#set_values[i]#
     #Test6
-    Dict_inv['T1'] = Dict_inv['T1']
-    Dict_inv['N1'] = Dict_inv['N1']
+    Dict_inv['T1'] = Dict_inv['T1']#set_values[i]#
+    Dict_inv['N1'] = Dict_inv['N1']#set_values2[i]#
 
     NV=NW=0
 
@@ -442,7 +441,7 @@ plt.xlim([0,30])
 #%% Python output figure
 plt.figure(figsize=(8, 4))
 plt.plot(L_T,uitvoer_set)
-plt.legend(['BKAS=1.0 [m]','BKAS=0.5 [m]','BKAS=2.0 [m]'])
+plt.legend(['Smooth wave'])#,'DT=0.01 [s]','DT=0.10 [s]'],loc='upper left')
 plt.xlim([-6,30])
 plt.grid()
 plt.xticks([-6,0,6,12,18,24,30])
