@@ -2,7 +2,7 @@
 
    <br />
 
-.. _examples:
+.. _example:
 
 Example: Simple lock with schematized wave
 ===========
