@@ -8,7 +8,7 @@ Defining the wave characteristics
 
 The wave enforces the change in the system, leading to hydraulic head over the lock gate. This wave is defined by two characteristics: the wave height and the wave propagation velocity. 
 
-The wave height needs to be provided as an array that describes the height of the wave at location A (see `getting started <https://lockgate5-branch2.readthedocs.io/en/latest/example.html>`_) throughout time. For example, the wave heights at location A are [0.0, 0.0, 0.6, 0.6] at times [-10,0,1,10]. Through linear interpolation, the wave height at times inbetween two indicated moments is determined. That means that in this example the wave heights between arrival of the wave (t=0.0 [s]) and arrival of the crest (t=1.0 [s]) are determined through linear interpolation. Note that the values in the time and wave height arrays do not need to be defined at discrete intervals.
+The wave height needs to be provided as an array that describes the height of the wave at location A (see `example <https://lockgate5-branch2.readthedocs.io/en/latest/example.html>`_) throughout time. For example, the wave heights at location A are [0.0, 0.0, 0.6, 0.6] at times [-10,0,1,10]. Through linear interpolation, the wave height at times inbetween two indicated moments is determined. That means that in this example the wave heights between arrival of the wave (t=0.0 [s]) and arrival of the crest (t=1.0 [s]) are determined through linear interpolation. Note that the values in the time and wave height arrays do not need to be defined at discrete intervals.
 
 .. code-block:: none
     

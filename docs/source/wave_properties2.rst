@@ -2,7 +2,7 @@ WINDGOLF
 ===========================  
 This documentation describes the files present in windgolf and focuses on the program G75.
 
-Wave and Hydrodynamic Calculation Fortran Files
+Fortran Files
 ------------------------------------
 
 - **WGOLF.FOR**:
