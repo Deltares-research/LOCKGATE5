@@ -1,5 +1,5 @@
 KASGOLF
-===========================  
+---------  
 
 **KASGOLF** is a 1D `Deltares <https://www.deltares.nl/>`_ tool for calculating the effect of a wave originating from a ship sailing by on an opened lock gate (when the gate is located in the gate recess (in dutch this word is 'deurkas')).  KASGOLF is able to calculate the head difference over time for a gate with vertical openings at the sides as well as for a horizontal opening underneath the gate. KASGOLF was originally developed by Delft Hydraulics in 1994 as part of LOCKGATE2 [1]. The code has been converted from the original Fortran code to the currently available Python code in 2024 and contains the same functionality as version KASGOLF 1994. 
 
