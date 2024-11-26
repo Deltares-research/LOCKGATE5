@@ -39,7 +39,7 @@ As can be seen in the figure, response in head difference is somewhat different 
 Different wave shape
 --------------------------------
 
-In previous examples, a wave is used that is described as an instant change in waterlevel (within 1 timestep). In reality the wave has a smoother profile. The figure below shows the change in shape of the wave. The second figure shows the head difference as calculated with this smoother wave (for result of the steep wave, see the blue line in the first figure).
+In previous examples, a wave is used that is described as an instant change in waterlevel (within 1 timestep). In reality the wave has a smoother profile. The figure below shows the change in shape of the wave, note that the time span on the x-axis is altered compared to other figures. The second figure shows the head difference as calculated with this smoother wave (for result of the steep wave, see the blue line in the first figure).
 
 .. image:: ../images/Test_6_golf.png
 
