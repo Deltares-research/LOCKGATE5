@@ -34,7 +34,7 @@ Next to vertical openings on the sides of the gate, also a horizontal opening ca
 
 .. image:: ../images/Test_4.png
 
-As can be seen in the figure, response in head difference is somewhat different when a horizontal gap is present. This is related to the 
+As can be seen in the figure, response in head difference is somewhat different when a horizontal gap is present. This is related to the response of the waterlevel in the gate recess. Additionally, an opening underneatht the gate lowers the extremes in head difference, which is strongest for the negative. Numerical instability seems to occur at the same time into the simulation.
 
 Different wave shape
 --------------------------------
