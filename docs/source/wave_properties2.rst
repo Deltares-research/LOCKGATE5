@@ -3,7 +3,7 @@ WINDGOLF
 This documentation describes the files present in windgolf and focuses on the program G75.
 
 Wave and Hydrodynamic Calculation Fortran Files
-===============================================
+------------------------------------
 
 - **WGOLF.FOR**:
   
@@ -198,7 +198,7 @@ Definitions of Parameters
 - :math:`c_1, c_2`: Coefficients calculated for output.  
 
 Output
-======
+------------------------------------
 
 The program saves results in an output file with the extension `.OUT`. Each row corresponds to a combination of wave height (:math:`H_g`) and wave period (:math:`T_s`) with the following columns:
 

@@ -42,6 +42,3 @@ Literature
 
 ##################
 
-WINDGOLF
-==========
-Text Ashraf....
