@@ -37,10 +37,8 @@ Literature
    :maxdepth: 1
    :caption: Contents:
 
-   
-   wave_properties2
-   
    KASGOLF
+   wave_properties2
 
    theory 
    getting-started

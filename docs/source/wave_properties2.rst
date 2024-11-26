@@ -157,8 +157,8 @@ The following formulas are applied in the calculations:
 
 
    .. math::
-       F_{h} = \frac{p_{r}}{2} \cdot (h_{o} - h_r) + \frac{p_{r} + p_{2}}{2} \cdot (h_r - h_{2}) 
-       + \frac{p_{2} + p_{3}}{2} \cdot (h_{2} - h_{3}) + \frac{p_{3} + p_{4}}{2} \cdot (h_{3} - h_{4})
+       F_{h} = \frac{p_{r}}{2} \cdot (h_{o} - h_r) + \frac{p_{r} + p_{2}}{2} \cdot (h_r - h_{2}) \
+       + \frac{p_{2} + p_{3}}{2} \cdot (h_{2} - h_{3}) + \frac{p_{3} + p_{4}}{2} \cdot (h_{3} - h_{4}) \
        + \frac{p_{4} + p_{5}}{2} \cdot (h_{4} - h_{5}) + \frac{p_{5} + p_b}{2} \cdot (h_{5} - h_b)
 
    
