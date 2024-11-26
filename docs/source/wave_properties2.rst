@@ -198,14 +198,14 @@ Definitions of Parameters
 - :math:`c_1, c_2`: Coefficients calculated for output.  
 
 Output
-------------------------------------
+-------------------------
 
 The program saves results in an output file with the extension `.OUT`. Each row corresponds to a combination of wave height (:math:`H_g`) and wave period (:math:`T_s`) with the following columns:
 
 :math:`H_{rr}/(g \cdot T_s^2)`, :math:`c_1`, :math:`c_2`, :math:`H_{rr}/d_r`, 
 
 Example Output
---------------
+-------------------------
 The values below are the first row from the code output using the default values.
 
 .. code-block:: text
