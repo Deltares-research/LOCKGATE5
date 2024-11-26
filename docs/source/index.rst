@@ -40,14 +40,6 @@ Literature
    KASGOLF
    wave_properties2
 
-   theory 
-   getting-started
-   example
-   tutorial
-   code
-   sensitivity-analysis
-   support
-
 ##################
 
 WINDGOLF
