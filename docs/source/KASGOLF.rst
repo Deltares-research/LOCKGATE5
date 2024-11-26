@@ -27,6 +27,7 @@ The KASGOLF documentation covers the following topics:
 
 ##################
 
+----------
 Literature
 ----------
 [1] WL | Delft Hydraulics (1994). ‘Krachten op puntdeuren en enkele draaideuren’ Report Q1442.
