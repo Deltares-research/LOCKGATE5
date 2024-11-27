@@ -19,9 +19,9 @@ import sphinx_rtd_theme
 
 # -- Project information -----------------------------------------------------
 
-project = 'LOCKGATE 2: KASGOLF'
-copyright = '2024, Nino Zuiderwijk'
-author = 'Nino Zuiderwijk'
+project = 'LOCKGATE 2'
+copyright = '2024, Nino Zuiderwijk, Ashraf Al-Mohagry'
+author = 'Nino Zuiderwijk, Ashraf Al-Mohagry'
 
 
 # -- General configuration ---------------------------------------------------
