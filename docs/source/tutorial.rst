@@ -1,14 +1,14 @@
 Tutorial
 ===========
 
-This tutorial will guide you through the steps that are required to set up an input (``.in``) file. The step to use the input file for a KASGOLF simulation can be found  `getting started <https://lockgate5-branch2.readthedocs.io/en/latest/getting-started.html>`_ chapter of the documentation.
+This tutorial will guide you through the steps that are required to set up an input (``.in``) file. The step to use the input file for a KASGOLF simulation can be found in the  `getting started <https://lockgate5-branch2.readthedocs.io/en/latest/getting-started.html>`_ chapter of the documentation.
 
 Defining the wave characteristics
 --------------------------------
 
 The wave enforces the change in the system, leading to hydraulic head over the lock gate. This wave is defined by two characteristics: the wave height and the wave propagation velocity. 
 
-The wave height needs to be provided as an array that describes the height of the wave at location A (see `example <https://lockgate5-branch2.readthedocs.io/en/latest/example.html>`_) throughout time. For example, the wave heights at location A are [0.0, 0.0, 0.6, 0.6] at times [-10,0,1,10]. Through linear interpolation, the wave height at times inbetween two indicated moments is determined. That means that in this example the wave heights between arrival of the wave (t=0.0 [s]) and arrival of the crest (t=1.0 [s]) are determined through linear interpolation. Note that the values in the time and wave height arrays do not need to be defined at discrete intervals.
+The wave height needs to be provided as an array that describes the height of the wave at location A (see `example <https://lockgate5-branch2.readthedocs.io/en/latest/example.html>`_) throughout time. For example, the wave heights at location A are [0.0, 0.0, 0.6, 0.6] at times [-10,0,1,10]. Through linear interpolation, the wave height at times in-between two indicated moments is determined. That means that in this example the wave heights between arrival of the wave (t=0.0 [s]) and arrival of the crest (t=1.0 [s]) are determined through linear interpolation. Note that the values in the time and wave height arrays do not need to be defined at discrete intervals.
 
 .. code-block:: none
     
@@ -18,7 +18,7 @@ The wave height needs to be provided as an array that describes the height of th
     **Wave height array for the wave
     N1 = 0.00, 0.00, -0.37, -0.37, -0.37, -0.37
 
-Additionally, KASGOLF allows the user to choose between to options that determine the propagation velocity of the wave in the lock chamber. The first option determines the propagation velocity of the wave to be equal to that of the translatory wave (M0=0), which is dependend on the water depth. The second option that the user can choose is to set the velocity equal to sailing velocity of a ship in the lock (M0=1). In the latter case, a value needs to provided to the parameter VS.
+Additionally, KASGOLF allows the user to choose between two options that determine the propagation velocity of the wave in the lock chamber. The first option sets the propagation velocity of the wave equal to that of the translatory wave (M0=0), which depends on the water depth. The second option that the user can choose is to set the velocity equal to sailing velocity of a ship in the lock (M0=1). In the latter case, a value needs to provided to the parameter for ship sailing velocity (VS).
 
 .. code-block:: none
 

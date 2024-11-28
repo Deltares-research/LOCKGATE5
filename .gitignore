@@ -233,12 +233,7 @@ docs/source/old/installation.rst
 docs/source/old/test.rst
 docs/source/old/theory.rst
 docs/source/old/usage.rst
-
-# Ignore workfiles
-SPUIS/SPUIS401/work.in
-SPUIS/SPUIS401/work.uin
-SPUIS/SPUIS401/work.uqh
-SPUIS/SPUIS401/work.uws
+docs/source/old/code.rst
 
 # Ignore Python bytecode files
 SPUIS/SPUIS401/py/__pycache__/
