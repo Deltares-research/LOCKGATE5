@@ -45,4 +45,4 @@ In previous examples, a wave is used that is described as an instant change in w
 
 .. image:: ../images/Test_6.png
 
-As can be seen in the second figure above, the head difference output graph shows a smoother response. The extremes are also lowered. Instability seems to occur earlier in the simulation.
+As can be seen in the second figure above, the head difference output graph shows a smoother response. The extremes are also lowered. Instability seems to occur already at t=+/- 1.6 [s] which is earlier in the simulation compared to the steep wave (t=+/- 11 [s], see the blue line in the top figure on this page).
