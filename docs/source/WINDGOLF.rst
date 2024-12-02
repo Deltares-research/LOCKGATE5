@@ -1,6 +1,6 @@
 WINDGOLF
 ===========================  
-This documentation provides a short description about the programs within the windgolf folder and focuses on the code program G75 for calculating the Quasi-static loads of standing wave against a vertical wall.
+This documentation provides a short description about the programs within the windgolf folder and focuses on the program G75.FOR for calculating the Quasi-static loads of standing wave against a vertical wall.
 
 Fortran Files
 ------------------------------------
@@ -32,23 +32,23 @@ Fortran Files
 - **G50.FOR**:
 
   - Calculates wave properties and the forces acting on the wave.
-  - Developed on June 18, 1991.
+  - Published June 18, 1991.
 
 - **G60.FOR**:
 
   - Iteratively determines wave lengths within the code.
-  - Developed on July 12, 1991.
+  - Published July 12, 1991.
 
 - **G70.FOR**:
 
   - Introduces coefficients for wave troughs (golfdal) and crests (golftop).
   - Iterates over user-defined ranges of wave heights (Hg) and periods (Ts).
-  - Developed on July 12, 1993.
+  - Published July 12, 1993.
 
 - **G75.FOR**:
 
   - Includes a new formula to calculate hydrostatic forces.
-  - Developed on July 12, 1993.
+  - Published July 12, 1993.
 
 .. note::
    The following documentation focuses on explaining the code and methodology used in **G75.FOR** as this is assumed to be the most recent code developed in this collection.
@@ -157,9 +157,8 @@ The following formulas are applied in the calculations:
 
 
    .. math::
-       F_{h} = \frac{p_{r}}{2} \cdot (h_{o} - h_r) + \frac{p_{r} + p_{2}}{2} \cdot (h_r - h_{2}) \
-       + \frac{p_{2} + p_{3}}{2} \cdot (h_{2} - h_{3}) + \frac{p_{3} + p_{4}}{2} \cdot (h_{3} - h_{4}) \
-       + \frac{p_{4} + p_{5}}{2} \cdot (h_{4} - h_{5}) + \frac{p_{5} + p_b}{2} \cdot (h_{5} - h_b)
+       F_{h} = \frac{p_{r}}{2} \cdot (h_{o} - h_r) + \frac{p_{r} + p_{2}}{2} \cdot (h_r - h_{2}) +\frac{p_{2} + p_{3}}{2} \cdot (h_{2} - h_{3}) +  \\
+      \frac{p_{3} + p_{4}}{2} \cdot (h_{3} - h_{4}) +\frac{p_{4} + p_{5}}{2} \cdot (h_{4} - h_{5}) + \frac{p_{5} + p_b}{2} \cdot (h_{5} - h_b) \\
 
    
 10. **Hydrostatic force calculation**:
