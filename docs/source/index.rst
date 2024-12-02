@@ -17,7 +17,7 @@ LOCKGATE2 contains the codes KASGOLF and WINDGOLF. Both codes are discussed in t
    :caption: Contents:
 
    KASGOLF
-   wave_properties2
+   WINDGOLF
 
 ##################
 

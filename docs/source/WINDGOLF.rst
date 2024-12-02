@@ -1,6 +1,6 @@
 WINDGOLF
 ===========================  
-This documentation describes the files present in windgolf and focuses on the program G75.
+This documentation provides a short description about the programs within the windgolf folder and focuses on the code program G75 for calculating the Quasi-static loads of standing wave against a vertical wall.
 
 Fortran Files
 ------------------------------------
@@ -56,8 +56,8 @@ Fortran Files
 
 
 
-The wave properties calculation process implemented in the `G75.py` program to calculate the Quasi-static loads against a vertical wall. his program is based on the G75.FOR program developed by A. Vrijburcht (1993).
-The program reads input data from a specified file, performs various wave-related calculations, and writes the results to an output file. The calculation involves determining wave heights, mean water levels, pressures, and forces using linear wave theory and hydrostatic pressure formulations.
+The `G75.FOR` program calculates the Quasi-static loads against a vertical wall and was developed by Delft Hydraulics in 1994 [1]. This code was converted from Fortran to Python in 2024, maintaining the same functionality as the original. The Python code's output has been validated to match the Fortran code's results, but the underlying theory has not been verified.
+The program reads input data from a specified file, performs various wave-related calculations, and writes the results to an output file. The calculation involves determining wave heights, mean water levels, pressures, and forces using linear wave theory and calculations of hydrostatic pressures.
 
 Function Overview
 -----------------  
@@ -211,3 +211,10 @@ The values below are the first row from the code output using the default values
 .. code-block:: text
 
     0.02548, 0.99564, 1.00537, 0.05000
+
+
+
+----------
+Literature
+----------
+[1] WL | Delft Hydraulics (1994). ‘Krachten op puntdeuren en enkele draaideuren’ Report Q1442.
