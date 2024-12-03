@@ -1,9 +1,11 @@
 WINDGOLF
 ===========================  
-This documentation provides a short description about the programs within the windgolf folder and focuses on the program G75.FOR for calculating the Quasi-static loads of standing wave against a vertical wall.
+This documentation provides a short description about the programs within the WINDGOLF folder and focuses on the program G75.FOR for calculating the Quasi-static loads of standing wave against a closed lock gate.
 
 Fortran Files
 ------------------------------------
+
+The WINDGOLF file contains various codes that are updates to older version. A list of all version is given below: 
 
 - **WGOLF.FOR**:
   
@@ -51,7 +53,7 @@ Fortran Files
   - Published July 12, 1993.
 
 .. note::
-   The following documentation focuses on explaining the code and methodology used in **G75.FOR** as this is assumed to be the most recent code developed in this collection.
+   The following documentation focuses on explaining the latest version of the code (**G75.FOR**) and methodology used in that code.
 
 
 
