@@ -212,8 +212,6 @@ The values below are the first row from the code output using the default values
 
     0.02548, 0.99564, 1.00537, 0.05000
 
-
-
 ----------
 Literature
 ----------
