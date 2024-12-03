@@ -63,13 +63,12 @@ The program reads input data from a specified file, performs various wave-relate
 
 Function Overview
 -----------------  
-The `G75` program calculates wave properties based on input parameters provided in an input file. It reads data, performs the calculations, and saves the results to an output file.
+The `G75` program calculates wave properties based on input parameters provided in an input file (`<filename>.IN`). It reads data, performs the calculations, and saves the results to an output file.
 
 Input parameters
 ^^^^^^^^^^  
-- `fileName`: The name of the input file (without extension). The input file should be in the current directory with a `.IN` extension.
 
-The function expects the input file (`<fileName>.IN`) to follow a specific order of the input parameters, structured as follows:
+Below the structure of the input file is given:
 
 **Row 1**: ID
 
@@ -201,7 +200,7 @@ Definitions of Parameters
 Output
 -------------------------
 
-The program saves results in an output file with the extension `.OUT`. Each row corresponds to a combination of wave height (:math:`H_g`) and wave period (:math:`T_s`) with the following columns:
+The program saves results in an output file (`<filename>.OUT`). Each row corresponds to a combination of wave height (:math:`H_g`) and wave period (:math:`T_s`) with the following columns:
 
 :math:`H_{rr}/(g \cdot T_s^2)`, :math:`c_1`, :math:`c_2`, :math:`H_{rr}/d_r`, 
 
