@@ -28,6 +28,8 @@ The KASGOLF documentation covers the following topics.
 ----------
 Literature
 ----------
-[1] WL | Delft Hydraulics (1994). ‘Krachten op puntdeuren en enkele draaideuren’ Report Q1442.\
-[2] WL | Delft Hydraulics (1997). ‘Sluisprogrammatuur REN’ Report Q2317.\
+[1] WL | Delft Hydraulics (1994). ‘Krachten op puntdeuren en enkele draaideuren’ Report Q1442.
+
+[2] WL | Delft Hydraulics (1997). ‘Sluisprogrammatuur REN’ Report Q2317.
+
 [3] Ministerie van Verkeer en Waterstaat, Rijkswaterstaat, Bouwdienst (RWS, BD) (2000). ‘Handboek voor het ontwerpen van schutsluizen’.
