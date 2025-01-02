@@ -8,7 +8,7 @@ Defining the wave characteristics
 
 The wave enforces the change in the system, leading to hydraulic head over the lock gate. This wave is defined by two characteristics: the wave height and the wave propagation velocity. 
 
-The wave height needs to be provided as an array that describes the height of the wave at location A (see `example <https://lockgate5-branch2.readthedocs.io/en/latest/example.html>`_) throughout time. For example, the wave heights at location A are [0.0, 0.0, 0.6, 0.6] at times [-10,0,1,10]. Through linear interpolation, the wave height at times in-between two indicated moments is determined. That means that in this example the wave heights between arrival of the wave (t=0.0 [s]) and arrival of the crest (t=1.0 [s]) are determined through linear interpolation. Note that the values in the time and wave height arrays do not need to be defined at discrete intervals.
+The wave height needs to be provided as an array that describes the height of the wave at location A (see `example <https://lockgate5-branch2.readthedocs.io/en/latest/example.html>`_) throughout time. For example, the wave heights at location V are [0.0, 0.0, -0.37, -0.37, -0.37, -0.37] at times [-20.00, 0.00, 0.02, 35.00, 35.01, 100.00]. Through linear interpolation, the wave height at times in-between two indicated moments is determined. That means that in this example the wave heights between arrival of the wave (t=0.0 [s]) and arrival of the crest (t=1.0 [s]) are determined through linear interpolation. Note that the values in the time and wave height arrays do not need to be defined at discrete intervals.
 
 .. code-block:: none
     
@@ -18,11 +18,11 @@ The wave height needs to be provided as an array that describes the height of th
     **Wave height array for the wave
     N1 = 0.00, 0.00, -0.37, -0.37, -0.37, -0.37
 
-Additionally, KASGOLF allows the user to choose between two options that determine the propagation velocity of the wave in the lock chamber. The first option sets the propagation velocity of the wave equal to that of the translatory wave (M0=0), which depends on the water depth. The second option that the user can choose is to set the velocity equal to sailing velocity of a ship in the lock (M0=1). In the latter case, a value needs to provided to the parameter for ship sailing velocity (VS).
+Additionally, KASGOLF allows the user to choose between two options for the delay in the arrival of the wave in the lock chamber between location V and W. The first option calculates this delay based on the propagation velocity from shallow wave theory (M0=0), which depends on the water depth. The second option is to calculate this delay based on the sailing velocity of a ship in the lock (M0=1). In the latter case, a value needs to provided to the parameter for ship sailing velocity (VS).
 
 .. code-block:: none
 
-    **Choice for propagation velocity wave (translatory wave (0) or sailing velocity ship (1))
+    **Choice for delay wave arrival between location V and W (translatory wave (0) or sailing velocity ship (1))
     M0 = 0
 
     **Sailing velocity of a ship when M0=1
@@ -81,7 +81,7 @@ The input file (``.in``) can now be created. The standard format for input files
     **End time of the simulation [s]
     TEND = 30.00
 
-    **Choice for propagation velocity wave (translatory wave (0) or sailing velocity ship (1))
+    **Choice for delay wave arrival between location V and W (translatory wave (0) or sailing velocity ship (1))
     M0 = 0
 
     **Sailing velocity of a ship when M0=1

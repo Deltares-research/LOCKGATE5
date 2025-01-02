@@ -3,7 +3,7 @@ Sensitivity Analysis
 
 The use of sailing velocity (M0=1)
 --------------------------------
-As mentioned in `getting started <https://lockgate5-branch2.readthedocs.io/en/latest/theory.html>`_, the user can choose to define the wave propagation velocity in the lock chamber through the sailing velocity of a ship. Note that this needs to have a higher value than is calculated by linear wave theory, otherwise the code will raise an error. As a result, the wave in the lock chamber propagates with an equal to or higher velocity than the translatory wave in the gate recess. In the example below a sailing velocity of 10.0 m/s is used (translatory wave propagation velocity = +/- 6.27 [m/s]).
+As mentioned in `getting started <https://lockgate5-branch2.readthedocs.io/en/latest/theory.html>`_, the user can choose to define the delay of wave arrival between location V and W in the lock chamber through the sailing velocity of a ship. Note that this value needs to be larger than is calculated by shallow wave theory, otherwise the code will raise an error. As a result, the wave in the lock chamber propagates with an equal to or higher velocity than the translatory wave in the gate recess. In the example below a sailing velocity of 10.0 m/s is used (translatory wave propagation velocity = +/- 6.27 [m/s]).
 
 .. image:: ../images/Test_1.png
 
@@ -16,7 +16,7 @@ A space is present between the gate and gate recess wall, referred to as 'channe
 
 .. image:: ../images/Test_2.png
 
-As the figure shows, reducing the width of the channel also reduces the peak in head difference over the gate. Reason for this is, a smaller channel results in a larger wave height of the translatory wave. At the same time it can be seen that the influence of the numerical instability increases. This effect is reduced for a wider channel, because the waveheight of the translatory wave is less sensitive.
+As the figure shows, reducing the width of the channel also reduces the peak in head difference over the gate. Reason for this is, a smaller channel results in a larger wave height of the translatory wave in the gate recess. At the same time it can be seen that the influence of the numerical instability increases. This effect is reduced for a wider channel, because the waveheight of the translatory wave is less sensitive.
 
 Width of the vertical opening 
 --------------------------------
@@ -30,7 +30,7 @@ From the figure it can be seen that the head difference is highly sensitive to t
 Horizontal opening underneath the gate
 --------------------------------
 
-In addition to vertical openings on the sides of the gate, also a horizontal opening can be present underneath the gate. This variable is given as the area of this opening in [m2] (AO). In previous runs, no horizontal opening was present. In the figure below this opening is implemented with varying area.
+In addition to vertical openings at the sides of the gate, also a horizontal opening can be present underneath the gate. This variable is given as the area of this opening in [m2] (AO). In previous runs, no horizontal opening was present. In the figure below this opening is implemented with varying area.
 
 .. image:: ../images/Test_4.png
 

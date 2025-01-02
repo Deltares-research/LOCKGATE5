@@ -45,7 +45,7 @@ TINIT = -6.0
 **End time of the simulation [s]
 TEND = 30.00
 
-**Choice for propagation velocity wave (translatory wave (0) or sailing velocity ship (1))
+**Choice for delay wave arrival between location V and W (translatory wave (0) or sailing velocity ship (1))
 M0 = 0
 
 **Sailing velocity of a ship when M0=1

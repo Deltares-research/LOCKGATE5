@@ -105,6 +105,9 @@ else:
     DTG = Dict_inv['LKK'] / Dict_inv['VS']           #looptijd golf in kas bij vaarsnelheid (M0 == 1)
 
 #Check of de vaarsnelheid groter is dan de loopsnelheid translatiegolf. Zo niet, kies andere vaarsnelheid
+
+## 24-12-2024!!! VS MAG WEL HOGER ZIJN DAN CK. NAMELIJK, HET SCHIP MAG SNELLER DAN CK AANGEZIEN DEZE EEN GOLF VOORTDUWT EN SNELLER BIJ NW KAN ZIJN DAN OP BASIS VAN CK.
+## LANGZAMER IS WEL EEN DING, DAN KRIJG JE VOORTPLANTING VAN EEN GOLF VOOR HET SCHIP DIE EERDER BIJ NW IS DAN HET SCHIP. DIT KAN DUS NIET! ZOALS NU OOK IN EHT SCRIPT STAAT
 if Dict_inv['M0'] != 0 and Dict_inv['VS'] < CK:
     raise ValueError(f'Error! Sailing velocity ship too low! Increase `VS` to >= {math.ceil(CK * 100) / 100} [m/s] or change M0 from 1 to 0 to calculate the wave propagation velocity based on waterdepth!')
 
