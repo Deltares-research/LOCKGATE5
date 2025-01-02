@@ -83,13 +83,13 @@ with open(Inv_naam, 'r') as file:
 
 uitvoer_set = pd.DataFrame()
 
-set_values = [0]#,0.01,0.10]#[0,1,2]
-set_values2 = [0,1]
-for i in range(0,len(set_values)):
+set_values = [-5,0,1,2.5,3.5,30]#[0,1,2]
+set_values2 = [0,0,-0.05,-0.3,-0.35,-0.35]
+for i in range(0,1):#len(set_values)):
 
     #test1
     Dict_inv['VS'] = Dict_inv['VS'] #set_values[i]#
-    Dict_inv['M0'] = Dict_inv['M0'] #set_values2[i]#
+    Dict_inv['M0'] = Dict_inv['M0']#set_values2[i]#
     #test2
     Dict_inv['BKAS'] = Dict_inv['BKAS'] #set_values[i]#
     #test3
@@ -100,8 +100,8 @@ for i in range(0,len(set_values)):
     #Test5
     Dict_inv['DT'] = Dict_inv['DT']#set_values[i]#
     #Test6
-    Dict_inv['T1'] = Dict_inv['T1']#set_values[i]#
-    Dict_inv['N1'] = Dict_inv['N1']#set_values2[i]#
+    Dict_inv['T1'] = set_values#Dict_inv['T1']#
+    Dict_inv['N1'] = set_values2#Dict_inv['N1']#
 
     NV=NW=0
 
@@ -441,17 +441,25 @@ plt.xlim([0,30])
 #%% Python output figure
 plt.figure(figsize=(8, 4))
 plt.plot(L_T,uitvoer_set)
-plt.legend(['Smooth wave'])#,'DT=0.01 [s]','DT=0.10 [s]'],loc='upper left')
+plt.legend(['Smooth wave'])#['M0=0','M0=1 with VS=8.0 [m/s]'])#,'DT=0.01 [s]','DT=0.10 [s]'],loc='upper left')
 plt.xlim([-6,30])
 plt.grid()
 plt.xticks([-6,0,6,12,18,24,30])
-plt.ylabel('Verval [m]')
-plt.xlabel('Tijd [s]')
+plt.ylabel('Head difference [m]')
+plt.xlabel('Time [s]')
 
 directory, file_name = os.path.split(in_file)
 output_file = os.path.join(directory, os.path.splitext(file_name)[0] + '.png')
 
 plt.savefig(f'{output_file}')
+
+#Plot instant en smooth wave
+#plt.plot([-5,0,0.02,30],[0,0,-0.35,-0.35])
+#plt.plot(set_values,set_values2)
+#plt.xlim([-1,6])
+#plt.legend(['Instant wave','Smooth wave'])
+#plt.xlabel('Time [s]')
+#plt.ylabel('Waterlevel [mNAP]')
 
 #Uitvoer
 # T = tijd [s]
