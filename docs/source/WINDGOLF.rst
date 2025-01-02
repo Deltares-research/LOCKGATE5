@@ -5,7 +5,7 @@ This documentation provides a short description about the programs within the WI
 Fortran Files
 ------------------------------------
 
-The WINDGOLF file contains various codes that are updates to older version. A list of all version is given below: 
+The WINDGOLF file contains various codes that are updates to older versions. A list of all versions is given below: 
 
 - **WGOLF.FOR**:
   
@@ -80,7 +80,7 @@ where:
 
 - **Identifier (ID)** : Identifier string for the data set.
 
-- **Wave Height** (:math:`H_g`): Initial wave height (in meters).
+- **Wave Height** (:math:`H_g`): Incoming wave height (in meters).
 
 - **Wave Period** (:math:`T_s`): Wave period (in seconds).
 
@@ -129,12 +129,12 @@ The following formulas are applied in the calculations:
 5. **Wave number**:
 
    .. math::
-       m = \frac{2 \pi}{L_g}
+       k = \frac{2 \pi}{L_g}
 
-6. **Wave number adjusted for depth**:
+6. **Angular frequency**:
 
    .. math::
-       k = \sqrt{g \cdot m \cdot \tanh(m \cdot d_r)}
+       \omega = \sqrt{g \cdot k \cdot \tanh(k \cdot d_r)}
 
 7. **Pressure calculations for linear wave theory**:
    
@@ -142,7 +142,7 @@ The following formulas are applied in the calculations:
 
 
    .. math::
-       p_{} = -\rho \cdot g \cdot z - \rho \cdot g \cdot \frac{H_{rr}}{2} \cdot \frac{\cosh(m \cdot (d_r + z))}{\cosh(m \cdot d_r)} \cdot \cos(k \cdot t)
+       p_{} = -\rho \cdot g \cdot z + \rho \cdot g \cdot \frac{H_{rr}}{2} \cdot \frac{\cosh(k \cdot (d_r + z))}{\cosh(k \cdot d_r)} \cdot \cos(\omega \cdot t)
 
 
 
@@ -151,7 +151,7 @@ The following formulas are applied in the calculations:
 8. **Hydrostatic pressure calculation**:
 
    .. math::
-       ph_{} = -\rho \cdot g \cdot z - \rho \cdot g \cdot \frac{H_{rr}}{2} \cdot \cos(k \cdot t)
+       ph_{} = -\rho \cdot g \cdot z + \rho \cdot g \cdot \frac{H_{rr}}{2} \cdot \cos(\omega \cdot t)
 
 9.  **Force calculations by linear wave theory**:
    The force by linear wave theory is calculated in each iteration step :math:`(i)` as follows:
@@ -185,8 +185,8 @@ Definitions of Parameters
 - :math:`d_r`: Water depth after wave reflection (m).  
 - :math:`z, z_1, z_2, z_3, z_4, z_5, z_b, z_d`: Various depth levels used in calculations (m).  
 - :math:`L_{go}, L_g`: Initial and adjusted wave lengths (m).  
-- :math:`m`: Wave number (1/m).  
-- :math:`k`: Wave number adjusted for depth (1/m).  
+- :math:`k`: Wave number (1/m).  
+- :math:`\omega`: Angular frequency (1/m).  
 - :math:`t`: Time (s).  
 - :math:`\eta`: Wave elevation (m).  
 - :math:`h_o`: Water surface elevation (m).  
