@@ -6,7 +6,7 @@
 
 Example: Simple lock with schematized wave
 ===========
-This example demonstrates the capability of the KASGOLF code by applying it to an hypothetical scenario. An overview of the lock and lockgate can be found in the figure below. The simulation starts at time t=-6.0 [s] with a time step of 0.02 [s]. A negative wave with height h=-0.37 [m] arrives at location V at time t=0 [s] and propagates to location W with the velocity of the ship (M0=1 and VS=1.4 [m/s]). It is assumed that there is no horizontal opening underneath the gate (AO=0 [:m:`m^2`]) and the friction coefficient (:m:`\mu`) for the discharge through the vertical and horizontal openings between the lock chamber and gate recess is equal to 0.70 [-]. 
+This example demonstrates the capability of the KASGOLF code by applying it to an hypothetical scenario. An overview of the lock and lockgate can be found in the figure below. The simulation starts at time t=-6.0 [s] with a time step of 0.02 [s]. A negative wave with height h=-0.37 [m] arrives at location V at time t=0 [s] and propagates to location W with the velocity of the ship (M0=1 and VS=1.4 [m/s]). It is assumed that there is no horizontal opening underneath the gate (AO=0 [:math:`m^2`]) and the friction coefficient (:math:`\mu`) for the discharge through the vertical and horizontal openings between the lock chamber and gate recess is equal to 0.70 [-]. 
 
 .. image:: ../images/example_berekening.png
 
