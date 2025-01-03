@@ -1,5 +1,6 @@
 Sensitivity Analysis
 ===========
+In this sensitivity analysis, parameters in the model are varied with respect to and compared with the calculation that is presented in `example <https://lockgate5-branch2.readthedocs.io/en/latest/example.html>`_.
 
 The use of sailing velocity (M0=1)
 --------------------------------
