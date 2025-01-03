@@ -105,7 +105,7 @@ else:
     DTG = Dict_inv['LKK'] / Dict_inv['VS']           #looptijd golf in kas bij vaarsnelheid (M0 == 1)
 
 ## 02-01-2025: Sluizenboek paragraaf 11.4.4.1/2/3 bevatten theorie over het ontstaan van de boeggolf en waterspiegelverlaging langszij een in- en uitvarend schip bij een sluis. 
-## Deze 'boeggolf' en 'waterspiegelverlaging langszij het schip' planten zich voort met de vaarsnelheid van het schip, ongeacht de propagation velocity op basis van shallow wave theory.
+## Deze 'boeggolf' en 'waterspiegelverlaging langszij het schip' planten zich voort met de vaarsnelheid van het schip, ongeacht de propagation velocity op basis van shallow wave theory. Alleen als de boeggolf het schip 'loslaat' versnelt deze volgens shallow wave theory.
 NKASR = Dict_inv['LKAS'] / CK / Dict_inv['DT'] #Aantal tijdstappen voor golf langs gehele kas
 NKAS = int(round(NKASR))
 NK = int(round(NKAS / 10))
