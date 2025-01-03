@@ -46,13 +46,13 @@ TINIT = -6.0
 TEND = 30.00
 
 **Choice for propagation velocity wave (translatory wave (0) or sailing velocity ship (1))
-M0 = 0
+M0 = 1
 
 **Sailing velocity of a ship when M0=1
 VS = 1.40
 
 **Time array for the wave
-T1 = -20.00, 0.00, 1.00, 2.50, 3.50, 35.00, 100.00
+T1 = -20.00, 0.00, 0.50, 1.00, 1.50, 35.00, 100.00
 
 **Wave height array for the wave
 N1 = 0.00, 0.00, -0.06, -0.31, -0.37, -0.37, -0.37

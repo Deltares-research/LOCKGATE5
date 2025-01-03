@@ -1,10 +1,10 @@
 Sensitivity Analysis
 ===========
-In this sensitivity analysis, parameters in the model are varied with respect to and compared with the calculation that is presented in `example <https://lockgate5-branch2.readthedocs.io/en/latest/example.html>`_.
+In this sensitivity analysis, parameters in the model are varied with respect to and compared with the calculation that is presented in `example <https://lockgate5-branch2.readthedocs.io/en/latest/example.html>`_ and `tutorial <https://lockgate5-branch2.readthedocs.io/en/latest/tutorial>`.
 
-The use of sailing velocity (M0=1)
+The use of sailing velocity (M0=0)
 --------------------------------
-As mentioned in `getting started <https://lockgate5-branch2.readthedocs.io/en/latest/theory.html>`_, the user can choose to define the delay of wave arrival between location V and W in the lock chamber through the sailing velocity of a ship. Note that this value needs to be larger than is calculated by shallow wave theory, otherwise the code will raise an error. As a result, the wave in the lock chamber propagates with an equal to or higher velocity than the translatory wave in the gate recess. In the example below a sailing velocity of 10.0 m/s is used (translatory wave propagation velocity = +/- 6.27 [m/s]).
+As mentioned in `getting started <https://lockgate5-branch2.readthedocs.io/en/latest/theory.html>`_, the user can choose to define the propagation velocity of the wave in the lock according to the shallow wave theory (M0=0 with c = +/- 6.27 [m/s]). Note that a negative wave (as used in this example) caused by a ship always propagates with the velocity of the ship and that this calculation is hypothetical to indicate the effect of this parameter.
 
 .. image:: ../images/Test_1.png
 
