@@ -1,6 +1,6 @@
 Sensitivity Analysis
 ===========
-In this sensitivity analysis, parameters in the model are varied with respect to and compared with the calculation that is presented in `example <https://lockgate5-branch2.readthedocs.io/en/latest/example.html>`_ and `tutorial <https://lockgate5-branch2.readthedocs.io/en/latest/tutorial>`.
+In this sensitivity analysis, parameters in the model are varied with respect to the example calculation in `example <https://lockgate5-branch2.readthedocs.io/en/latest/example.html>`_ which includes a negative wave from the drop in water level alongside a ship that exits a lock. The input file for this simulation has been presented in `tutorial <https://lockgate5-branch2.readthedocs.io/en/latest/tutorial>`.
 
 The use of sailing velocity (M0=0)
 --------------------------------
@@ -8,7 +8,7 @@ As mentioned in `getting started <https://lockgate5-branch2.readthedocs.io/en/la
 
 .. image:: ../images/Test_1.png
 
-As can be seen in the figure, a higher propagation velocity in the lock chamber causes a larger head difference that occurs earlier than if the propagation velocity of the wave in the lock chamber equals the propagation velocity in the gate recess (translatory wave). The numerical instability occurs at roughly the same time step.
+As can be seen in the figure, for a propagation velocity of the wave in the lock chamber based on linear wave theory (equal to that in the gate recess) results in a significantly different shape. The peak negative head difference occurs earlier since the wave in the lock chamber reaches the second vertical opening at location W earlier. The peak itself is lowered since the translatory waves in the lock chamber and gate recess meet at location B. This is similar for the positive head difference peak. The numerical instability occurs at an earlier time step.
 
 Spacing between gate and gate recess wall
 --------------------------------
@@ -17,21 +17,21 @@ A space is present between the gate and gate recess wall, referred to as 'channe
 
 .. image:: ../images/Test_2.png
 
-As the figure shows, reducing the width of the channel also reduces the peak in head difference over the gate. Reason for this is, a smaller channel results in a larger wave height of the translatory wave in the gate recess. At the same time it can be seen that the influence of the numerical instability increases. This effect is reduced for a wider channel, because the waveheight of the translatory wave is less sensitive.
+As the figure shows, reducing the width of the channel increases the influence of the numerical instability and causes the instability to occur earlier in the simulation (even before the wave in the lock chamber reaches the second vertical opening at location W). This effect is reduced for a wider channel and therefore seems to be less sensitive.
 
 Width of the vertical opening 
 --------------------------------
 
-Two vertical openings are present on the sides of the gate, which can differ in spacing. In the figure below, the spacing of the vertical opening at location A (BA, the first that is reached by the incoming wave) is altered.
+Two vertical openings are present on the sides of the gate, which can differ in spacing. In the figure below, the spacing of the vertical opening at location A (BA, the first that is reached by the incoming wave) is varied.
 
 .. image:: ../images/Test_3.png
 
-From the figure it can be seen that the head difference is highly sensitive to the width of the opening at A (BA). A wider channel results in faster response of the waterlevel in the channel, reducing the head difference. For the simulation in which BA exceeds the width of the opening at B (BB=0.50 [m], green line), the maximum positive head difference is larger than for the simulation where BA=0.30 [m] (orange line). However, for a very small spacing at location A (BA), the positive and negative head difference are largerst. The numerical instability seems to occur later in the simulation when increasing BA.
+From the figure it can be seen that the head difference is highly sensitive to the width of the opening at A (BA). A wider channel results in faster response of the waterlevel in the channel creating a positive peak in head difference immediatly after the wave arrives at location A. As a result, the negative peak is reduced. For the simulation in which BA (=0.70 [m]) exceeds BB (=0.50 [m]) a positive peak forms after the negative peak, whereas this is not the case for the simulation with BA=0.30 [m]. The numerical instability does not seem to have a clear relation to BA.
 
 Horizontal opening underneath the gate
 --------------------------------
 
-In addition to vertical openings at the sides of the gate, also a horizontal opening can be present underneath the gate. This variable is given as the area of this opening in [m2] (AO). In previous runs, no horizontal opening was present. In the figure below this opening is implemented with varying area.
+In addition to vertical openings at the sides of the gate, also a horizontal opening can be present underneath the gate. This variable is given as the area of this opening (AO) in [m2]. In previous runs, no horizontal opening was present. In the figure below this opening is implemented with varying area.
 
 .. image:: ../images/Test_4.png
 
@@ -46,4 +46,4 @@ In previous examples, a wave is used that is described as an instant change in w
 
 .. image:: ../images/Test_6.png
 
-As can be seen in the second figure above, the head difference output graph shows a smoother response. The extremes are also lowered. Instability seems to occur already at t=+/- 1.6 [s] which is earlier in the simulation compared to the steep wave (t=+/- 11 [s], see the blue line in the top figure on this page).
+As can be seen in the second figure above, the head difference output graph shows a smoother response. However, the extremes show similar values indicating that an instant wave can be used for this purpose. 
