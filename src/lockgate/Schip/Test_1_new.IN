@@ -1,0 +1,58 @@
+**###########################################################
+**Date              : 20-11-2024
+**Filename  : Inv_Test_run.in
+**Lock          : Example
+**
+**Input file for program KASGOLF version 1994.
+**Calculation of wave driven hydraulic head over an opened lock gate.
+**
+**Remark : Lines starting with '**' are for comments.
+**###########################################################
+
+**Initial water level in gate recess (in Dutch: 'deurkas') [mNAP]
+HKI = 0.00
+
+**Position of the lock bottom [mNAP]
+ZK = -4.00
+
+**Length of the lock gate at the side of the lock chamber [m]
+LKK = 10.00
+
+**Length of the lock gate at the side of the gate recess [m]
+LKAS = 10.00
+
+**Width of the channel (section) between the wall of the gate recess and lock gate [m]
+BKAS = 1.00
+
+**Width of the vertical opening between locations V and A [m]
+BA = 0.05
+
+**Width of the vertical opening between locations W and B [m]
+BB = 0.50
+
+**Area of the horizontal opening underneath the lock gate [m2]
+AO = 0
+
+**Friction coefficient for the discharge through both vertical openings at the sides and the horizontal opening underneath the gate [-]
+MU = 0.70
+
+**Time step [s]
+DT = 0.02
+
+**Start time of the simulation [s]
+TINIT = -6.0
+
+**End time of the simulation [s]
+TEND = 30.00
+
+**Choice for propagation velocity wave (translatory wave (0) or sailing velocity ship (1))
+M0 = 1
+
+**Sailing velocity of a ship when M0=1
+VS = 1.40
+
+**Time array for the wave
+T1 = -20.00, 0.00, 0.02, 2.50, 3.50, 35.00, 100.00
+
+**Wave height array for the wave
+N1 = 0.00, 0.00, -0.37, -0.37, -0.37, -0.37, -0.37
