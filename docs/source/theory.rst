@@ -14,7 +14,15 @@ For the calculation of these water levels, the length of the gate is divided in 
 
 .. image:: ../images/overzicht_kas_kolk_secties.png
 
+To run a simulation with KASGOLF, the bed level of the lock and the dimensions of the gate, gate recess and openings need to be inserted in the model. The wave height of the water level variation in the lock chamber is inserted as a time array for location A. After a certain delay, this wave height then reaches location B. For the propagation velocity of this wave in the lock chamber the user of the model can choose between two options: 1) the propagation velocity of the translatory wave or the sailing velocity of the ship. The propagation velocity of the translatory wave in the gate recess is calculated using shallow wave theory:
+
 .. math::
-To run a simulation with KASGOLF, the bed level of the lock and the dimensions of the gate, gate recess and openings need to be inserted in the model. The wave height of the water level variation in the lock chamber is inserted as a time array for location A. After a certain delay, this wave height then reaches location B. For the propagation velocity of this wave in the lock chamber the user of the model can choose between two options: 1) the propagation velocity of the translatory wave or the sailing velocity of the ship. The propagation velocity of the translatory wave in the gate recess is calculated using shallow wave theory (c = \sqrt{g \cdot h} in [m/2] with g the gravitational acceleration in [m/s^2] and h the water depth in [m]). 
+
+   c = \sqrt{g \cdot h} \quad \text{[m/s]}
+
+where:
+
+- \( g \) is the gravitational acceleration \([m/s^2]\),
+- \( h \) is the water depth \([m]\).
 
 
