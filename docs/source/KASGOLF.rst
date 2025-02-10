@@ -5,12 +5,7 @@ This documentation is for **KASGOLF**, a 1D `Deltares <https://www.deltares.nl/>
 
 The KASGOLF code has been explained in the report ‘Krachten op puntdeuren en enkele draaideuren’ [3] and examples of simulation results from the code are presented in [1] & [3]. The code and its simulation results have not yet been validated with measurement data since the code has been setup to make quick and rough estimations [2]. 
 
-The KASGOLF documentation covers the following topics.
-1. The theory on which KASGOLF is based,
-2. An example calculation,
-3. A tutorial for setting up a KASGOLF schematization,
-4. Instructions for running KASGOLF on your computer,
-5. A sensitivity analysis that investigates the response of the simulation result to adjustments in a selection of parameters.
+The KASGOLF documentation covers the following topics: The theory on which KASGOLF is based, an example calculation, a tutorial for setting up a KASGOLF schematization, instructions for running KASGOLF on your computer and a sensitivity analysis on a selection of parameters.
 
 .. toctree::
    :maxdepth: 1

@@ -12,7 +12,7 @@
 **Initial water level in gate recess (in Dutch: 'deurkas') [mNAP]
 HKI = 0.00
 
-**Position of the lock bottom [mNAP]
+**Position of the lock floor [mNAP]
 ZK = -4.00
 
 **Length of the lock gate at the side of the lock chamber [m]
@@ -33,7 +33,7 @@ BB = 0.50
 **Area of the horizontal opening underneath the lock gate [m2]
 AO = 0
 
-**Friction coefficient for the discharge through both vertical openings at the sides and the horizontal opening underneath the gate [-]
+**Discharge coefficient for the discharge through both vertical openings at the sides and the horizontal opening underneath the gate [-]
 MU = 0.70
 
 **Time step [s]

@@ -18,7 +18,7 @@ The wave height must to be provided as an array that describes the wave height a
     **Wave height array for the wave
     N1 = 0.00, 0.00, -0.37, -0.37, -0.37
 
-Additionally, KASGOLF allows the user to choose between two options for the delay in the arrival of the wave in the lock chamber between location V and W. The first option calculates this delay based on the propagation velocity from shallow wave theory (M0=0), which depends on the water depth. The second option is to calculate this delay based on the sailing velocity of a ship in the lock (M0=1). In the latter case, a value needs to provided to the parameter for ship sailing velocity (VS). In this example, the water level drop alongside a ship that enters a lock is modelled (M0=1 with VS=1.40 [m/s]).
+Additionally, KASGOLF allows the user to choose between two options for the delay in the arrival of the wave in the lock chamber between location V and W. The first option calculates this delay based on the propagation velocity of shallow wave theory (M0=0) that depends on the water depth. The second option is to calculate this delay based on the sailing velocity of a ship in the lock (M0=1). In the latter case, a value needs to provided to the parameter for ship sailing velocity (VS). In this example, the water level drop alongside a ship that enters a lock is modelled (M0=1 with VS=1.40 [m/s]).
 
 .. code-block:: none
 

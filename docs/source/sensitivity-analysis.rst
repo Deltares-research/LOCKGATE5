@@ -2,13 +2,13 @@ Sensitivity Analysis
 ===========
 In this sensitivity analysis, parameters in the model are varied with respect to the example calculation in `example <https://lockgate5-branch2.readthedocs.io/en/latest/example.html>`_ which includes a negative wave from the drop in water level alongside a ship that exits a lock. The input file for this simulation has been presented in `tutorial <https://lockgate5-branch2.readthedocs.io/en/latest/tutorial>`.
 
-The use of sailing velocity (M0=0)
+Using propagation velocity based on shallow wave theory (M0=0)
 --------------------------------
-As mentioned in `getting started <https://lockgate5-branch2.readthedocs.io/en/latest/theory.html>`_, the user can choose to define the propagation velocity of the wave in the lock according to the shallow wave theory (M0=0 with c = +/- 6.27 [m/s]). Note that a negative wave (as used in this example) caused by a ship always propagates with the velocity of the ship and that this calculation is hypothetical to indicate the effect of this parameter.
+As mentioned in `getting started <https://lockgate5-branch2.readthedocs.io/en/latest/theory.html>`_, the user can choose to define the propagation velocity of the wave in the lock according to the shallow wave theory (M0=0 with c = +/- 6.27 [m/s]). Note that a negative wave (as used in this example) caused by a ship always propagates with the velocity of the ship. That makes this calculation copmletely hypothetical and is only used to indicate the effect of this parameter.
 
 .. image:: ../images/Test_1.png
 
-As can be seen in the figure, for a propagation velocity of the wave in the lock chamber based on linear wave theory (equal to that in the gate recess) results in a significantly different shape. The peak negative head difference occurs earlier since the wave in the lock chamber reaches the second vertical opening at location W earlier. The peak itself is lowered since the translatory waves in the lock chamber and gate recess meet at location B. This is similar for the positive head difference peak. The numerical instability occurs at an earlier time step.
+As can be seen in the figure, for a propagation velocity of the wave in the lock chamber based on shallow wave theory (orange line, where the propagation velocity is equal to that of the translatory wave in the gate recess) results in a significantly different shape. The peak negative head difference occurs earlier since the wave in the lock chamber reaches the vertical opening at location W faster. The peak itself is lowered since the translatory waves in the lock chamber and gate recess meet at location B instead of in the gate recess. This is similar for the positive head difference peak. The numerical instability occurs at an earlier time step.
 
 Spacing between gate and gate recess wall
 --------------------------------
@@ -17,7 +17,7 @@ A space is present between the gate and gate recess wall, referred to as 'channe
 
 .. image:: ../images/Test_2.png
 
-As the figure shows, reducing the width of the channel increases the influence of the numerical instability and causes the instability to occur earlier in the simulation (even before the wave in the lock chamber reaches the second vertical opening at location W). This effect is reduced for a wider channel and therefore seems to be less sensitive.
+As the figure shows, reducing the width of the channel increases the influence of the numerical instability and causes the instability to occur earlier in the simulation (even before the wave in the lock chamber reaches the second vertical opening at location W). This effect is reduced for a wider channel and therefore seems to be less sensitive. The peaks are reduced with increasing width in the gate recess. This can be explained by the reduction in wave height of the translatory wave in the gate recess for larger channel width and opposite for smaller channel width.
 
 Width of the vertical opening 
 --------------------------------
