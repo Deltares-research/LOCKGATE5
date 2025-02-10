@@ -10,7 +10,7 @@ Through vertical openings on the sides of the gate and a horizontal opening unde
 
 .. image:: ../images/overzicht_kas_kolk.png
 
-For the calculation of these water levels, the length of the gate is divided in 10 equal sections to discretize the process (both channels are half and together count as 1). By limiting the simulation to 10 sections, the computation time reduces as well as the resolution. Lower resolution causes steeper waterlevel variation with minor overestimation of the head difference. More sections would smoothen the sharp peaks. In the figure below the 10 sections are shown with each section having a water level on both sides of the lockgate. By averaging the water levels in the sections, the average water level on both sides of the gate is calculated and is translated into the head difference over the gate. Friction on the translatory wave in the gate recess is neglected in KASGOLF.
+For the calculation of these water levels, the length of the gate is divided in 10 equal sections to discretize the process (both channels are half and together count as 1). By limiting the simulation to 10 sections, the computation time reduces as well as the resolution. More sections would smoothen the sharp peaks, though the effect is limited. In the figure below the 10 sections are shown with each section having a water level on both sides of the lockgate. By averaging the water levels in the sections, the average water level on both sides of the gate is calculated and is translated into the head difference over the gate. Friction on the translatory wave in the gate recess is neglected in KASGOLF.
 
 .. image:: ../images/overzicht_kas_kolk_secties.png
 
