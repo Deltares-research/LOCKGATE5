@@ -24,6 +24,6 @@ In the figure above, it can be seen that the head is increasingly negative, thus
 
 The input file that was used for the calculation of this example case is shown below.
 
-.. literalinclude:: ../input/Example_=0.6m.IN
+.. literalinclude:: ../input/Example_invoer.IN
    :language: none
    
