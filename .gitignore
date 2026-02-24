@@ -222,3 +222,20 @@ unit_test_coverage/
 test-results.xml
 
 .env.*
+
+docs/source/old/background.rst
+docs/source/old/code.rst
+docs/source/old/conf.py
+docs/source/old/conf_old.py
+docs/source/old/examples.rst
+docs/source/old/index.rst
+docs/source/old/installation.rst
+docs/source/old/test.rst
+docs/source/old/theory.rst
+docs/source/old/usage.rst
+docs/source/old/code.rst
+
+# Ignore Python bytecode files
+SPUIS/SPUIS401/py/__pycache__/
+*.pyc
+*.pyo

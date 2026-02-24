@@ -8,7 +8,7 @@ The following modules are identified:
 2. Lockgate2: 
 3. Lockgate3: 
 4. Lockgate4: 
-5. Lockgate5: 
+5. Lockgate5: Calculates the forces exerted by passing vessels on opened lock gate.
 6. Lockgate6: 
 7. Lockgate7: 
 8. Lockgate8: 
